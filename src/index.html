@@ -7,31 +7,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>CSS Houdini Talk</title>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/presentation.css">
 </head>
 
 <body>
   <p-deck>
-    <p-slide style="--slide-bg: plum">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      <p-fragment>
-        Quas optio rerum laborum, facere quaerat aliquam dolorem
-        temporibus consectetur est quam blanditiis sequi similique,
-        <p-fragment>
-          consequuntur vel ipsa.
-          <p-notes>Some latin thingamajig</p-notes>
-        </p-fragment>
-      </p-fragment>
-      <p-fragment>
-        Quia possimus provident doloremque!
-      </p-fragment>
+    <p-slide style="--slide-bg: #f60 paint(delaunay);">
+      <h1>The tricks of Houdini</h1>
+      <h2>A magic wand for the future of CSS</h2>
     </p-slide>
-    <p-slide>
-      Hello
-      <p-notes>This slide has more</p-notes>
-      <p-notes>notes than content.</p-notes>
-    </p-slide>
-    <p-slide style="--slide-bg: orange">World</p-slide>
-    <p-slide style="--slide-bg: springgreen">!</p-slide>
+    <p-slide>Massimo Artizzu</p-slide>
   </p-deck>
   <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
   <div role="toolbar">
@@ -47,6 +32,7 @@
   <script type="module" src="js/slide.js"></script>
   <script type="module" src="js/fragment.js"></script>
   <script type="module" src="js/notes.js"></script>
+  <script type="module" src="js/presentation.js"></script>
 </body>
 
 </html>
