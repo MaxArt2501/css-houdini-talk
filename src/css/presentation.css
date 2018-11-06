@@ -123,7 +123,7 @@
 .our-header {
   border-left: var(--brand-color) solid .15em;
   padding: .5em;
-  margin-bottom: .5em;
+  margin: 0 0 .5em;
 }
 
 .inline-logo {
@@ -133,7 +133,7 @@
 
 .vega {
   position: absolute;
-  top: 35%;
+  height: 75%;
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
