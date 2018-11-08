@@ -131,6 +131,17 @@
   vertical-align: middle;
 }
 
+.self-center {
+  align-self: center;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+
+.unpadded {
+  padding: 0;
+}
+
 .vega {
   position: absolute;
   height: 75%;
@@ -139,7 +150,57 @@
   transform: translateX(-50%);
 }
 
+.full-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.meme-text {
+  position: relative;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: .05em;
+}
+
+.blink {
+  animation: blink 1s steps(1) infinite;
+}
+
 p-slide {
   position: relative;
   outline: 1px solid red;
+}
+
+p {
+  margin: 0 0 .5em;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+pre {
+  font-size: 50%;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+  margin-top: 0;
+}
+
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
 }
