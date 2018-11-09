@@ -1,5 +1,5 @@
 import { getOptionObject } from "../common.js";
-import Delaunator from '../../delaunator.js';
+import Delaunator from '../../../vendor/delaunator/index.js';
 
 const PROPS = [
   '--delaunay-point-area',

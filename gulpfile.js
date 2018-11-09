@@ -59,7 +59,10 @@ task('static', () => {
   src([
       'node_modules/p-slides/components/**/*.js',
       'node_modules/p-slides/*.js',
-      'node_modules/p-slides/css/**/*.css'
+      'node_modules/p-slides/css/**/*.css',
+      'node_modules/prismjs/prism.js',
+      'node_modules/prismjs/themes/prism-okaidia.css',
+      'node_modules/delaunator/index.js'
     ], { base: './node_modules' })
     .pipe(dest('public/vendor'));
 });

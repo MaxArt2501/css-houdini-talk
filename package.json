@@ -17,7 +17,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "p-slides": "^0.1.0"
+    "delaunator": "^3.0.2",
+    "p-slides": "^0.1.0",
+    "prismjs": "^1.15.0"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
