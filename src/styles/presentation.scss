@@ -1,0 +1,31 @@
+@import "core/typography.scss";
+@import "core/utility.scss";
+@import "core/scaffold.scss";
+
+:root {
+  font-family: Raleway, system-ui, sans-serif;
+  --slide-bg: white;
+  --brand-color: #f60;
+}
+
+.js-heading {
+  background: #f7df1e;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  padding: .35em;
+}
+
+.our-header {
+  border-left: var(--brand-color) solid .15em;
+  padding: .5em;
+  margin: 0 0 .5em;
+}
+
+.vega {
+  position: absolute;
+  height: 75%;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}

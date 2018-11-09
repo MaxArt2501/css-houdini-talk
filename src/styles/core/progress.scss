@@ -1,0 +1,10 @@
+.presentation-progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: .5rem;
+  z-index: 150;
+  --progress: 0;
+  background-image: linear-gradient(to right, var(--progress-color) var(--progress), transparent 0);
+}

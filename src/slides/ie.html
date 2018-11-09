@@ -1,0 +1,129 @@
+<p-slide>
+  <h4 class="our-header">Let's talk about&hellip;</h4>
+  <p-fragment class="js-heading" style="font-size: 3em;">
+    JavaScript
+  </p-fragment>
+  <p-fragment>
+    <img data-lazy-src="./img/vega.gif" alt="Vincent Vega confused" class="vega">
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h1 class="center">Wait!<br>It gets better!</h1>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Let's talk about <span class="js-heading">JavaScript</span>&hellip;</h4>
+  <p-fragment class="center bold" style="font-size: 1.5em;">
+    on Internet Explorer <img data-lazy-src="./img/ie.png" alt="IE logo" class="inline-logo">
+  </p-fragment>
+  <p-fragment class="center bold" style="font-size: 6em;">6</p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Even Microsoft had good ideas!</h4>
+  <p-fragment class="center">
+    <img data-lazy-src="./img/seriously.svg" alt="David Silverman's meme face" style="height: 5em;">
+  </p-fragment>
+  <p-fragment>
+    Usually, with a <em>very poor execution&hellip;</em>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Internet Explorer</h3>
+  <p>
+    introduced 2 ways J<s>ava</s>Script could extend CSS:
+  </p>
+  <ul class="self-center">
+    <li>
+      <p-fragment>👉 expressions;</p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 behaviors.</p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">IE's CSS expressions</h3>
+  <pre><code class="language-css">.indicator {
+width: 100%;
+color: expression(this.clientWidth > 400 ? 'red' : 'blue');
+}</code></pre>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">IE's CSS behaviors</h3>
+  <pre><code class="language-html">&lt;!-- boxsizing.htc -->
+&lt;component lightWeight="true">
+&lt;attach event="onpropertychange" onevent="checkPropertyChange()" />
+&lt;attach event="ondetach" onevent="restore()" />
+&lt;script type="text/javascript">//&lt;![CDATA[
+function checkPropertyChange(){ ... }
+...
+//]]>&lt;/script>
+&lt;/component></code></pre>
+</p-slide>
+<p-slide>
+  <h1 class="center">👍</h1>
+  <ul class="self-center">
+    <li>
+      <p-fragment>✅ extensible CSS;</p-fragment>
+    </li>
+    <li>
+      <p-fragment>✅ reusable directives;</p-fragment>
+    </li>
+    <li>
+      <p-fragment>✅ declarative code.</p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h1 class="center">👎</h1>
+  <ul class="self-center">
+    <li>
+      <p-fragment>❌ IE only;</p-fragment>
+    </li>
+    <li>
+      <p-fragment>
+        😰 <em>atrocious</em> performance;
+        <p-notes>We're talking about IE, after all</p-notes>
+      </p-fragment>
+    </li>
+    <li>
+      <p-fragment>
+        😭 used to crash the browser <em>a lot</em>;
+        <p-notes>Because whatever, uncostrained crap was allowed</p-notes>
+      </p-fragment>
+    </li>
+    <li>
+      <p-fragment>
+        😱 a nightmare to debug 🧟‍
+        <p-notes>Anyone remembers IE5's devtools? 'cors not, because there were <em>none</em></p-notes>
+      </p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide class="unpadded justify-end">
+  <img data-lazy-src="./img/kill-it-with-fire.webp" alt="Hank Scorpio flamethrowing" class="full-media">
+  <h1 class="meme-text self-center blink">KILL IT WITH FIRE</h1>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">What now?</h2>
+  <p class="center">CSS is evolving:</p>
+  <ul class="self-center">
+    <li>
+      <p-fragment>👍 slowly, but steady</p-fragment>
+    </li>
+    <li>
+      <p-fragment>👌 with a clear process</p-fragment>
+    </li>
+    <li>
+      <p-fragment>🤝 involving all parties.</p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h2 class="center">But no matter what the W3C does</h2>
+  <p-fragment>CSS will <em>never</em> cover everyone's use cases.</p-fragment>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">In short&hellip;</h2>
+  <p class="center">We're still like this:</p>
+  <img data-lazy-src="./img/peter-griffin-css.gif" alt="Peter Griffin meddling with blinds" class="self-center">
+</p-slide>

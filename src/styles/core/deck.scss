@@ -1,0 +1,11 @@
+p-deck {
+  &:not([mode]),
+  &[mode="presentation"] {
+    transition: background-color var(--sliding-duration) var(--sliding-duration);
+    background-color: var(--current-slide-bg, transparent);
+  }
+
+  &[mode="speaker"] p-fragment {
+    opacity: 1;
+  }
+}

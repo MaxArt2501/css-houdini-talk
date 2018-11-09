@@ -1,3 +1,5 @@
+import { registerElements, setStyleRoot } from '../vendor/p-slides/index.js';
+
 const deck = document.querySelector('p-deck');
 
 function handleHash() {
@@ -31,8 +33,8 @@ function getSlide(slideRef) {
   return document.querySelector(`#${slideRef}`);
 }
 
-const progressBar = document.querySelector('[role="progressbar"]');
-const navButtons = [ ...document.querySelectorAll('nav button') ].reduce((map, button) => {
+const progressBar = document.querySelector('.presentation-progress');
+const navButtons = [ ...document.querySelectorAll('.presentation-nav button') ].reduce((map, button) => {
   map[button.className] = button;
   return map;
 }, {});
@@ -46,7 +48,23 @@ function changeHash(slide) {
   const { mode } = deck;
   location.href = '#' + slideRef + (mode === 'presentation' ? '' : `&mode=${mode}`);
 }
+const lazyAttribs = [ 'src', 'srcset', 'href' ];
+const lazySelector = lazyAttribs.map(attrib => `[data-lazy-${attrib}]`).join();
+function loadLazyMedia(root) {
+  for (const element of root.querySelectorAll(lazySelector)) {
+    for (const { name, value } of Object.values(element.attributes))  {
+      if (/^data-lazy-/.test(name)) {
+        const realAttribute = name.slice(10);
+        const realAttributeValue = element.getAttribute(realAttribute);
+        if (realAttributeValue !== value) {
+          element.setAttribute(realAttribute, value);
+        }
+      }
+    }
+  }
+}
 deck.addEventListener('p-slides.slidechange', ({ detail: { slide } }) => {
+  loadLazyMedia(slide);
   changeHash(slide);
 
   const progress = +(deck.currentIndex * 100 / (deck.slides.length - 1)).toFixed(2);
@@ -84,3 +102,5 @@ document.addEventListener('keydown', keyEvent => {
   }
 });
 
+setStyleRoot('vendor/p-slides/css/');
+registerElements();
