@@ -1,0 +1,59 @@
+<p-slide>
+  <h3 class="our-header">So, what can we do?</h3>
+  <div class="center" style="font-size: 2.5em">🤔</div>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">Enter Houdini</h2>
+  <p>A project inside the W3C to expose parts of the CSS engine to web developers</p>
+  <p-fragment class="center">(7 parts, to be precise)</p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Houdini modules</h4>
+  <ul class="self-center">
+    <li><p-fragment>👉 Paint API</p-fragment></li>
+    <li><p-fragment>👉 Typed OM</p-fragment></li>
+    <li><p-fragment>👉 Properties & Values API</p-fragment></li>
+    <li><p-fragment>👉 Layout API</p-fragment></li>
+    <li><p-fragment>👉 AnimationWorklet</p-fragment></li>
+    <li><p-fragment>👉 Parser API</p-fragment></li>
+    <li><p-fragment>👉 Font Metrics API</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Does any browser implement it?</h4>
+  <p-fragment>
+    <p class="center" style="font-size: 1.5em">
+      <a href="https://ishoudinireadyyet.com/">ishoudinireadyyet.com</a>
+    </p>
+    <p class="center">by Surma</p>
+    <p-notes>Also the source of data about the state of each module</p-notes>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">Worklets</h2>
+  <p>Think of Workers, but lightweight</p>
+  <ul class="two-columns">
+    <li><p-fragment>
+      ❌ no DOM et al.
+      <p-notes>e.g. events, <code>navigator</code>, <code>location</code>&hellip;</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>❌ no <code>fetch()</code></p-fragment></li>
+    <li><p-fragment>
+      ❌ no <code>import()</code>
+      <p-notes>It's in the language, but always rejects</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>
+      ❌ no storage
+      <p-notes>e.g. <code>localStorage</code>, IndexedDB, caches&hellip;</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>❌ no <code>setTimeout</code></p-fragment></li>
+    <li><p-fragment>
+      ❌ no side effects
+      <p-notes>e.g. WebRTC, WebUSB, channels, crypto&hellip;</p-notes>
+    </p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide class="justify-start">
+  <h1 class="meme-text center">Are you ready?</h1>
+  <video data-lazy-src="img/ready.mp4" autoplay loop class="full-media"></video>
+</p-slide>

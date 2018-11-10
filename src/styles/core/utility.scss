@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
 .justify-center {
   justify-content: center;
 }
@@ -28,6 +31,7 @@
 
 .meme-text {
   position: relative;
+  z-index: 1;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   -webkit-text-fill-color: white;
   -webkit-text-stroke-color: black;
@@ -51,4 +55,13 @@
   0% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
+}
+
+.two-columns {
+  display: flex;
+  flex-wrap: wrap;
+
+  > * {
+    flex: 0 0 50%;
+  }
 }

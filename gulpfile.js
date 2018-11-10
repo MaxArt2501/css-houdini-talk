@@ -81,7 +81,7 @@ task('serve', [ 'default' ], () => {
   });
 
   watch('src/styles/**/*.scss', [ 'css' ]);
-  watch('src/{presentation,slides}/**/*.html', [ 'slides+reload' ]);
+  watch('src/{presentations,slides}/**/*.html', [ 'slides+reload' ]);
   watch('src/js/**/*.js', [ 'js+reload' ]);
   watch('static/**/*', [ 'static+reload' ]);
 });
