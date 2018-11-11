@@ -29,3 +29,10 @@
   bottom: 0;
   transform: translateX(-50%);
 }
+
+.delaunay-sample {
+  background: var(--brand-color) paint(delaunay);
+  height: 4em;
+  width: calc(4em * var(--slide-aspect-ratio));
+  margin: 0 auto;
+}

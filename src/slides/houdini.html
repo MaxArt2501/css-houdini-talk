@@ -31,16 +31,19 @@
 </p-slide>
 <p-slide>
   <h2 class="our-header">Worklets</h2>
-  <p>Think of Workers, but lightweight</p>
-  <ul class="two-columns">
+  <p>Think of Workers, but lightweight:</p>
+  <ul class="two-columns self-center">
     <li><p-fragment>
       ❌ no DOM et al.
       <p-notes>e.g. events, <code>navigator</code>, <code>location</code>&hellip;</p-notes>
     </p-fragment></li>
-    <li><p-fragment>❌ no <code>fetch()</code></p-fragment></li>
     <li><p-fragment>
-      ❌ no <code>import()</code>
-      <p-notes>It's in the language, but always rejects</p-notes>
+      ❌ no <code>fetch()</code>
+      <p-notes>Also no dynamic <code>import</code>: it's in the language, but always rejects</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>
+      ❌ no <code>postMessage</code>
+      <p-notes>Meaning you can't communicate with the main thread</p-notes>
     </p-fragment></li>
     <li><p-fragment>
       ❌ no storage

@@ -1,0 +1,67 @@
+<p-slide class="justify-center">
+  <h1 class="our-header">Paint API</h1>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">What's for?</h4>
+  <p>Allows to <em>draw</em> an image, to be used as a background, a border, a mask&hellip;</p>
+  <div class="two-columns">
+    <p-fragment class="self-center">
+      <div class="delaunay-sample"></div>
+    </p-fragment>
+    <p-fragment>
+      <pre style="font-size: 40%;"><code class="language-css">.delaunay {
+  background-color: #f60;
+  background-image: paint(delaunay);
+}</code></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <pre><code class="language-js">// delaunay.js
+class DelaunayModule {</code>
+<p-fragment><code class="language-js">  paint(context, geometry, properties) { ... }
+
+</code></p-fragment><p-fragment><code class="language-js">  static get inputProperties() {
+    return [ '--delaunay-point-area', ... ];
+  }</code></p-fragment>
+}
+<p-fragment><code class="language-js">
+registerPaint('delaunay', DelaunayModule);
+</code></p-fragment>
+<p-fragment><code class="language-js">// main.js
+CSS.paintWorklet.addModule('./delaunay.js').then(...);
+</code></p-fragment></pre>
+  <p-notes>Of course the module must adhere to the same-origin policy, must be on https or localhost, yadda yadda&hellip;</p-notes>
+</p-slide>
+<p-slide>
+  <h4 class="our-header"><code>paint(context, geometry, properties)</code></h4>
+  <p><code>context</code> is a stripped-down <code>CanvasRenderingContext2D</code></p>
+  <ul class="self-center">
+    <li><p-fragment>❌ no text capabilities</p-fragment></li>
+    <li><p-fragment>❌ no image manipulation</p-fragment></li>
+    <li><p-fragment>😥 <em>including</em> reading from the canvas itself</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <div>👉 <code>geometry</code> has just two numeric properties:</div>
+  <p-fragment class="self-center"><p>↔ <code>width</code> and ↕ <code>height</code></p></p-fragment>
+  <p-fragment><p>
+      👉 <code>properties</code> is a <code>Map</code> of the CSS properties given by <code>inputProperties</code>
+    <p-fragment>in the <em>new</em> object model.</p-fragment>
+  </p></p-fragment>
+  <p-fragment class="self-center"><p>Can be custom <em>and</em> native CSS properties! 🙌</p></p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Where can I use it?</h4>
+  <ul class="self-center">
+    <li><p-fragment>👉 <code>background-image</code></p-fragment></li>
+    <li><p-fragment>👉 <code>border-image</code></p-fragment></li>
+    <li><p-fragment>👉 <code>mask-image</code></p-fragment></li>
+    <li><p-fragment>👉 <code>list-style-image</code></p-fragment></li>
+    <li><p-fragment>👉 <code>::before</code> and <code>::after</code></p-fragment></li>
+    <li><p-fragment>&hellip; possibly <em>anything</em> that can accept a <code>url()</code></p-fragment></li>
+    <li><p-fragment>❌ except <code>cursor</code></code></p-fragment></li>
+  </ul>
+  <p-notes>Some of these behave weirdly, but kinda work.
+    Take note there's must be <em>something</em> to paint.</p-notes>
+</p-slide>
