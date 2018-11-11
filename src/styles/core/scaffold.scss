@@ -2,6 +2,16 @@ p-slide {
   position: relative;
 }
 
+pre p-fragment code[class*="language-"] {
+  white-space: pre;
+}
+
+:not(pre) > code {
+  background-color: rgba(255, 102, 0, .1);
+  border-radius: .25em;
+  padding: 0 .25em;
+}
+
 p {
   margin: 0 0 .5em;
 }
@@ -16,11 +26,16 @@ pre {
   font-size: 50%;
 }
 
-h1:first-child,
-h2:first-child,
-h3:first-child,
-h4:first-child,
-h5:first-child,
-h6:first-child {
-  margin-top: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
