@@ -65,3 +65,18 @@
     flex: 0 0 50%;
   }
 }
+
+.crossed {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    --cross-color: red;
+    background-image: paint(crossed);
+  }
+}

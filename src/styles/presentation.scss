@@ -36,3 +36,9 @@
   width: calc(4em * var(--slide-aspect-ratio));
   margin: 0 auto;
 }
+
+.units {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8em, 1fr));
+  font-size: 70%;
+}

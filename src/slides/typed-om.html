@@ -12,3 +12,140 @@
   </p-fragment>
   <p-notes>How is <em>that</em> an improvement?!</p-notes>
 </p-slide>
+<p-slide>
+  <div class="center">One word:</div>
+  <p-fragment>
+    <h1 class="center">Performance</h1>
+  </p-fragment>
+  <p-fragment>
+    <p class="center">and other stuff</p>
+  </p-fragment>
+  <p-fragment>
+    <p class="center"><small>(ok, that's 4)</small></p>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">What usually happens</h4>
+  <pre><code class="language-js">const width = someComputation();
+element.style.width = `${width}px`;</code></pre>
+  <p class="center">
+    <p-fragment>number</p-fragment>
+    <p-fragment>➡ string</p-fragment>
+    <p-fragment>➡ CSS parse</p-fragment>
+    <p-fragment>➡ CSS value</p-fragment>
+  </p>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">What happens with Typed OM</h4>
+  <pre><code class="language-js">const width = someComputation();
+    element.attributeStyleMap.set('width', CSS.px(width));</code></pre>
+  <p class="center">
+    <p-fragment>number</p-fragment>
+    <p-fragment>
+      ➡ <span class="crossed">string</span>
+      ➡ <span class="crossed">CSS parse</span>
+      ➡ CSS value
+    </p-fragment>
+  </p>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">So what's <code>CSS.px()</code>?</h4>
+  <pre>&gt; <code class="language-js">CSS.px(10)</code>
+&lt; <code>&#9654; <em>CSSUnitValue</em></code> <code class="language-js">{value: 16, unit: "px"}</code></pre>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">In case you were wondering&hellip;</h4>
+  <ul class="units">
+    <li><code>CSS.ch()</code></li>
+    <li><code>CSS.cm()</code></li>
+    <li><code>CSS.deg()</code></li>
+    <li><code>CSS.dpcm()</code></li>
+    <li><code>CSS.dpi()</code></li>
+    <li><code>CSS.dppx()</code></li>
+    <li><code>CSS.em()</code></li>
+    <li><code>CSS.ex()</code></li>
+    <li><code>CSS.fr()</code></li>
+    <li><code>CSS.grad()</code></li>
+    <li><code>CSS.Hz()</code></li>
+    <li><code>CSS.ic()</code></li>
+    <li><code>CSS.in()</code></li>
+    <li><code>CSS.kHz()</code></li>
+    <li><code>CSS.lh()</code></li>
+    <li><code>CSS.mm()</code></li>
+    <li><code>CSS.ms()</code></li>
+    <li><code>CSS.number()</code></li>
+    <li><code>CSS.pc()</code></li>
+    <li><code>CSS.percent()</code></li>
+    <li><code>CSS.pt()</code></li>
+    <li><code>CSS.px()</code></li>
+    <li><code>CSS.Q()</code></li>
+    <li><code>CSS.rad()</code></li>
+    <li><code>CSS.rem()</code></li>
+    <li><code>CSS.rlh()</code></li>
+    <li><code>CSS.s()</code></li>
+    <li><code>CSS.turn()</code></li>
+    <li><code>CSS.vb()</code></li>
+    <li><code>CSS.vh()</code></li>
+    <li><code>CSS.vi()</code></li>
+    <li><code>CSS.vmax()</code></li>
+    <li><code>CSS.vmin()</code></li>
+    <li><code>CSS.vw()</code></li>
+  </ul>
+  <p-notes>A method for each unit of measure. Some aren't supported yet.</p-notes>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Typed OM's types (partial list)</h4>
+  <ul class="self-center">
+    <li><p-fragment>
+      👉 <code>CSSKeywordValue</code>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>CSSMathValue</code>
+      <p-notes>There are other helper classes to build complex <code>calc()</code> expressions</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>CSSTransformValue</code>
+      <p-notes>There are helper classes to build complex transformations too</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>CSSVariableReferenceValue</code>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>CSSUnparsedValue</code>
+      <p-notes>This is what you get for a custom property (normally)</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>CSSStyleValue</code>
+      <p-notes>This is an opaque representation</p-notes>
+    </p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Style maps</h4>
+  <p>What's <code>.attributeStyleMap</code>?</p>
+  <p>
+    <p-fragment>It's a <code>Map</code></p-fragment>
+    <p-fragment>for style properties</p-fragment>
+  </p>
+  <p class="center"><p-fragment><code>StylePropertyMap</code></p-fragment></p>
+  <p-notes>It means you can set numbers, strings or typed values; and you get only typed values.</p-notes>
+</p-slide>
+<p-slide>
+  <p>There are two defined on elements:</p>
+  <ul class="self-center">
+    <li><p-fragment>
+      👉 <code>.attributeStyleMap</code>
+    </p-fragment></li>
+    <li><p-fragment>
+      ~ <code>.style</code>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>.computedStyleMap<p-fragment>()</p-fragment></code><p-notes>
+        I have no idea why the didn't call it <code>getComputedStyleMap</code>, if they didn't fear to be verbose
+      </p-notes>
+    </p-fragment></li>
+    <li><p-fragment>
+      ~ <code>window.getComputedStyle()</code>
+    </p-fragment></li>
+  </ul>
+</p-slide>
