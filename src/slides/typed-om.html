@@ -26,7 +26,7 @@
 </p-slide>
 <p-slide>
   <h4 class="our-header">What usually happens</h4>
-  <pre><code class="language-js">const width = someComputation();
+  <pre class="big self-center"><code class="language-js">const width = someComputation();
 element.style.width = `${width}px`;</code></pre>
   <p class="center">
     <p-fragment>number</p-fragment>
@@ -37,7 +37,7 @@ element.style.width = `${width}px`;</code></pre>
 </p-slide>
 <p-slide>
   <h4 class="our-header">What happens with Typed OM</h4>
-  <pre><code class="language-js">const width = someComputation();
+  <pre class="big self-center"><code class="language-js">const width = someComputation();
 element.attributeStyleMap.set('width', CSS.px(width));</code></pre>
   <p class="center">
     <p-fragment>number</p-fragment>
@@ -50,7 +50,7 @@ element.attributeStyleMap.set('width', CSS.px(width));</code></pre>
 </p-slide>
 <p-slide>
   <h4 class="our-header">So what's <code>CSS.px()</code>?</h4>
-  <pre>&gt; <code class="language-js">CSS.px(10)</code>
+  <pre class="big">&gt; <code class="language-js">CSS.px(10)</code>
 &lt; <code>&#9654; <em>CSSUnitValue</em></code> <code class="language-js">{value: 10, unit: "px"}</code></pre>
 </p-slide>
 <p-slide>
@@ -131,7 +131,7 @@ element.attributeStyleMap.set('width', CSS.px(width));</code></pre>
     <p-fragment>It's a <code>Map</code></p-fragment>
     <p-fragment>for style properties</p-fragment>
   </p>
-  <p class="center"><p-fragment><code>StylePropertyMap</code></p-fragment></p>
+  <p class="center"><big><p-fragment><code>StylePropertyMap</code></p-fragment></big></p>
   <p-notes>It means you can set numbers, strings or typed values; and you get only typed values.</p-notes>
 </p-slide>
 <p-slide>
@@ -169,8 +169,8 @@ element.attributeStyleMap.set('width', CSS.px(width));</code></pre>
   <p-fragment class="self-center" style="font-size: 2em">🥁</p-fragment>
   <h2 class="center">
     <p-fragment class="self-center">
-      Internet Explorer 6
       <img data-lazy-src="./img/ie.png" alt="IE logo" class="inline-logo">
+      Internet Explorer <p-fragment><big>6</big></p-fragment>
     </p-fragment>
   </h2>
   <p-notes>That had nothing to do with performance, though.</p-notes>
@@ -189,7 +189,7 @@ element.attributeStyleMap.set('width', CSS.px(width));</code></pre>
         <p-notes>Event for numeric values, like <code>opacity</code> or <code>z-index</code></p-notes>
       </p-fragment>
       <p-fragment style="display: block">
-        <pre><code class="language-js">element.style.opacity += 0.1; // oh noes!</code></pre>
+        <pre class="big"><code class="language-js">el.style.opacity += 0.1; // oh noes!</code></pre>
       </p-fragment>
     </li>
     <li style="margin-top: 1em">
@@ -197,7 +197,7 @@ element.attributeStyleMap.set('width', CSS.px(width));</code></pre>
         💥 Invalid values now <em>throw</em>
       </p-fragment>
       <p-fragment style="display: block">
-        <pre><code class="language-js">element.attributeStyleMap.set('margin', 'hello!'); // BOOM!</code></pre>
+        <pre class="big"><code class="language-js">el.attributeStyleMap.set('margin', 'foo'); // BOOM!</code></pre>
       </p-fragment>
     </li>
   </ul>

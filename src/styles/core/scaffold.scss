@@ -23,8 +23,12 @@ ul {
   list-style: none;
 }
 
-pre {
+pre[class*="language-"] {
   font-size: 50%;
+}
+pre.big[class*="language-"] {
+  font-size: 75%;
+  padding: .5em .6667em;
 }
 
 h1,
