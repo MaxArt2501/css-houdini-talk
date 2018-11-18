@@ -64,3 +64,18 @@
   from { width: 10em; }
   to { width: 20em; }
 }
+
+ripple-button {
+  border: none;
+  border-radius: .25em;
+  font-size: 2em;
+  width: 10em;
+  padding: .25em 0;
+  background-image: paint(ripple);
+  background-color: var(--brand-color);
+  color: white;
+  text-align: center;
+  box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, .35);
+  cursor: default;
+  --ripple-duration: .5s;
+}
