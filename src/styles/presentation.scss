@@ -42,3 +42,25 @@
   grid-template-columns: repeat(auto-fill, minmax(8em, 1fr));
   font-size: 70%;
 }
+
+.the-box {
+  background-color: rebeccapurple;
+  color: white;
+  text-align: center;
+
+  &.animated {
+    animation: streeetch 2s infinite;
+    &-wrong {
+      animation-name: streeetch-wrong;
+    }
+  }
+}
+
+@keyframes streeetch {
+  from { width: 10em; }
+  to { width: 20em; }
+}
+@keyframes streeetch-wrong {
+  from { width: 10em; }
+  to { width: 20em; }
+}

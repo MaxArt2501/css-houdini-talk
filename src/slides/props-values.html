@@ -1,0 +1,105 @@
+<p-slide class="justify-center">
+  <h1 class="our-header">Properties and values</h1>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">#1: the cascade?</h3>
+  <pre class="big"><code class="language-css">.box {
+  width: 20em;
+  width: red;
+}</code></pre>
+  <p-fragment>
+    <code class="crossed">width: red</code> gets ignored
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">What happens <em>now?</em></h3>
+  <pre class="big"><code class="language-css">.box {
+  --box-width: 20em;
+  --box-width: red;
+  width: var(--box-width);
+}</code></pre>
+  <p-fragment>
+    It's <code class="crossed">--box-width: 20em</code> that gets ignored!
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">#2: animations</h4>
+  <pre class="big"><code class="language-css">.box { animation: streeetch 2s infinite; }
+@keyframes streeetch {
+  from { width: 10em; }
+  to   { width: 20em; }
+}</code></pre>
+  <p-fragment class="self-center">
+    <div class="the-box animated">BOX</div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big"><code class="language-css">.box {
+  width: var(--box-width);
+  animation: streeetch 2s infinite;
+}
+@keyframes streeetch {
+  from { --box-width: 10em; }
+  to   { --box-width: 20em; }
+}</code></pre>
+  <p-fragment class="self-center">
+    <div class="the-box animated-wrong">BOX</div>
+  </p-fragment>
+</p-slide>
+<p-slide class="justify-center">
+  <h1 class="center">Why?<br>🤔</h1>
+  <p-notes><code>width</code> is <em>known</em> to be a length, while <code>--box-width</code> is not</p-notes>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Set the <em>type</em> of a custom property</h4>
+  <pre class="self-center big"><code class="language-js">CSS.registerProperty({</code>
+  <p-fragment><code class="language-js">name: '--box-width',</code></p-fragment>
+  <p-fragment><code class="language-js">syntax: '&lt;width>',</code></p-fragment>
+  <p-fragment><code class="language-js">initialValue: CSS.px(0),</code></p-fragment>
+  <p-fragment><code class="language-js">inherits: false</code></p-fragment>
+<code class="language-js">});</code></pre>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">All the syntaxes</h4>
+  <ul class="two-columns">
+    <li><code>&ltcolor></code></li>
+    <li><code>&ltlength></code></li>
+    <li><code>&ltpercentage></code></li>
+    <li><code>&ltlength-percentage></code></li>
+    <li><code>&ltnumber></code></li>
+    <li><code>&ltinteger></code></li>
+    <li><code>&ltangle></code></li>
+    <li><code>&lttime></code></li>
+    <li><code>&lturl></code></li>
+    <li><code>&ltimage></code></li>
+    <li><code>&lttransform-list></code></li>
+    <li><code>&lttransform-function></code></li>
+    <li><code>&ltresolution></code></li>
+    <li><code>&ltcustom-ident></code></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Combinations too</h4>
+  <ul class="self-center">
+    <li><p-fragment>👉 Space separated: <code>&lt;color>+</code></p-fragment></li>
+    <li><p-fragment>👉 Comma separated: <code>&lt;url>#</code></p-fragment></li>
+    <li><p-fragment>👉 Type union: <code>&lt;number> | &lt;length></code></p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Bonus 🙌</h4>
+  <p class="center"><big>Interpolated custom properties <em>work with Paint API</em> 👌</big></p>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Next step 🔭</h4>
+  <p-fragment>
+    <p>Register properties <em>in CSS</em> 🎉</p>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-css">@property --box-width {
+  syntax: '&lt;width>';
+  initial-value: 0px;
+  inherits: false;
+}</code></pre>
+  </p-fragment>
+</p-slide>
