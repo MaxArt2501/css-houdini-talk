@@ -1,3 +1,7 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
 p-slide {
   position: relative;
 }
@@ -11,6 +15,10 @@ pre p-fragment code[class*="language-"] {
   border-radius: .25em;
   padding: 0 .25em;
   box-shadow: inset 0 0 .05em rgba(black, .25);
+
+  pre & {
+    box-shadow: none;
+  }
 }
 
 p {

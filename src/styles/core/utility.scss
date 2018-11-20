@@ -62,7 +62,13 @@
   flex-wrap: wrap;
 
   > * {
-    flex: 0 0 50%;
+    flex: 0 0 calc(50% - 1em);
+    &:nth-child(odd) {
+      margin-right: .5em;
+    }
+    &:nth-child(even) {
+      margin-left: .5em;
+    }
   }
 }
 

@@ -2,29 +2,29 @@
   <h1 class="our-header">Properties and values</h1>
 </p-slide>
 <p-slide>
-  <h3 class="our-header">#1: the cascade?</h3>
-  <pre class="big"><code class="language-css">.box {
+  <h3 class="our-header">#1: the cascade</h3>
+  <pre class="big self-center"><code class="language-css">.box {
   width: 20em;
   width: red;
 }</code></pre>
-  <p-fragment>
+  <p-fragment class="self-center">
     <code class="crossed">width: red</code> gets ignored
   </p-fragment>
 </p-slide>
 <p-slide>
   <h3 class="our-header">What happens <em>now?</em></h3>
-  <pre class="big"><code class="language-css">.box {
+  <pre class="big self-center"><code class="language-css">.box {
   --box-width: 20em;
   --box-width: red;
   width: var(--box-width);
 }</code></pre>
-  <p-fragment>
+  <p-fragment class="self-center">
     It's <code class="crossed">--box-width: 20em</code> that gets ignored!
   </p-fragment>
 </p-slide>
 <p-slide>
   <h4 class="our-header">#2: animations</h4>
-  <pre class="big"><code class="language-css">.box { animation: streeetch 2s infinite; }
+  <pre class="big self-center"><code class="language-css">.box { animation: streeetch 2s infinite; }
 @keyframes streeetch {
   from { width: 10em; }
   to   { width: 20em; }
@@ -34,7 +34,7 @@
   </p-fragment>
 </p-slide>
 <p-slide>
-  <pre class="big"><code class="language-css">.box {
+  <pre class="big self-center"><code class="language-css">.box {
   width: var(--box-width);
   animation: streeetch 2s infinite;
 }
@@ -54,14 +54,14 @@
   <h4 class="our-header">Set the <em>type</em> of a custom property</h4>
   <pre class="self-center big"><code class="language-js">CSS.registerProperty({</code>
   <p-fragment><code class="language-js">name: '--box-width',</code></p-fragment>
-  <p-fragment><code class="language-js">syntax: '&lt;width>',</code></p-fragment>
+  <p-fragment><code class="language-js">syntax: '&lt;length>',</code></p-fragment>
   <p-fragment><code class="language-js">initialValue: CSS.px(0),</code></p-fragment>
   <p-fragment><code class="language-js">inherits: false</code></p-fragment>
 <code class="language-js">});</code></pre>
 </p-slide>
 <p-slide>
   <h4 class="our-header">All the syntaxes</h4>
-  <ul class="two-columns">
+  <ul class="syntaxes">
     <li><code>&ltcolor></code></li>
     <li><code>&ltlength></code></li>
     <li><code>&ltpercentage></code></li>
@@ -97,7 +97,7 @@
   </p-fragment>
   <p-fragment class="self-center">
     <pre class="big"><code class="language-css">@property --box-width {
-  syntax: '&lt;width>';
+  syntax: '&lt;length>';
   initial-value: 0px;
   inherits: false;
 }</code></pre>

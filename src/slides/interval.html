@@ -19,6 +19,51 @@
   <ripple-button class="self-center">Hello! 👋</ripple-button>
 </p-slide>
 <p-slide>
+  <pre><code class="language-js">registerPaint('ripple', class {
+  static get inputProperties() {
+    return [ '--ripple-color', ... ];
+  }
+  paint(ctx, { width, height }, props) {
+    const color = props.get('--ripple-color');
+    ...
+    ctx.fillStyle = color;
+    ctx.arc(centerX.value, centerY.value,
+      radius.value * farthest / 100, 0, Math.PI * 2);
+    ctx.fill();
+  }
+});</code></pre>
+</p-slide>
+<p-slide>
+  <div class="two-columns">
+    <pre><code class="language-js">CSS.registerProperty({
+  name: '--ripple-color',
+  syntax: '&lt;color>',
+  initialValue: '#fff0',
+  inherits: false
+});
+CSS.registerProperty({
+  name: '--ripple-radius',
+  syntax: '&lt;percentage>',
+  ...
+});
+...</code></pre>
+    <p-fragment>
+      <pre><code class="language-js">const duration =
+  this.computedStyleMap()
+    .get('--ripple-duration')
+    .to('ms').value;
+</code>
+<p-fragment><code class="language-js">button.animate([{
+  '--ripple-color': '#ffffff80',
+  '--ripple-radius': CSS.percent(0)
+}, {
+  '--ripple-color': '#ffffff00',
+  '--ripple-radius': CSS.percent(100)
+}], duration);</code></p-fragment></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
   <h4 class="center">We can already do a lot, but&hellip;</h4>
   <p-fragment>
     <h1 class="center">Can I use it in production?</h1>
