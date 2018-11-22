@@ -49,7 +49,7 @@ CSS.registerProperty({
 ...</code></pre>
     <p-fragment>
       <pre><code class="language-js">const duration =
-  this.computedStyleMap()
+  button.computedStyleMap()
     .get('--ripple-duration')
     .to('ms').value;
 </code>
@@ -71,4 +71,11 @@ CSS.registerProperty({
 </p-slide>
 <p-slide>
   <img data-lazy-src="img/ihry.png" alt="Is Houdini Ready Yet screenshot" class="full-media">
+  <p-notes>There's a handy table reporting the status of Houdini's specs at W3C, and their implementation among the major browsers</p-notes>
+  <p-fragment class="overlay-banner" style="font-size: 2em;">
+    Is Houdini
+    <p-fragment>ready yet</p-fragment><p-fragment>.com
+      <p-notes>Serously, that's the site. Maintained by Surma, the guy who recently talked about Houdini at the last Chrome Dev Summit</p-notes>
+    </p-fragment>
+  </p-fragment>
 </p-slide>

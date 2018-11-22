@@ -86,3 +86,16 @@
     background-image: paint(crossed);
   }
 }
+
+.overlay-banner {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: rgba(black, .5);
+  color: white;
+  text-shadow: 0 .1em .2em rgba(black, .5);
+  text-align: center;
+  line-height: 1.5;
+}

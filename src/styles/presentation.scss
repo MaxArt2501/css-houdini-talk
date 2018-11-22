@@ -30,6 +30,62 @@
   transform: translateX(-50%);
 }
 
+.drawing-circle {
+  align-self: center;
+  width: 10em;
+  height: 10em;
+  border-radius: 5em;
+  position: relative;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+
+  svg {
+    grid-area: 1 / 1 / span 2 / span 2;
+  }
+
+  path {
+    fill: var(--brand-color);
+    transform: rotate(45deg);
+    transform-origin: 5px 5px;
+  }
+  p-fragment {
+    font-size: 75%;
+    width: 6em;
+    height: 6em;
+    background-color: rgba(blue, .5);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: -1em;
+
+    &:nth-child(1) {
+      grid-area: 1 / 1 / span 1 / span 1;
+      align-self: start;
+      justify-self: start;
+    }
+    &:nth-child(2) {
+      grid-area: 1 / 2 / span 1 / span 1;
+      align-self: start;
+      justify-self: end;
+    }
+    &:nth-child(3) {
+      grid-area: 2 / 2 / span 1 / span 1;
+      align-self: end;
+      justify-self: end;
+    }
+    &:nth-child(4) {
+      grid-area: 2 / 1 / span 1 / span 1;
+      align-self: end;
+      justify-self: start;
+    }
+  }
+}
+
 .delaunay-sample {
   background: var(--brand-color) paint(delaunay);
   height: 6em;
