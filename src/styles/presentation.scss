@@ -30,7 +30,7 @@
   transform: translateX(-50%);
 }
 
-.drawing-circle {
+.rendering-cycle {
   align-self: center;
   width: 10em;
   height: 10em;
@@ -40,8 +40,17 @@
   grid-template-columns: 50% 50%;
   grid-template-rows: 50% 50%;
 
-  svg {
+  svg, span {
     grid-area: 1 / 1 / span 2 / span 2;
+  }
+  span {
+    align-self: center;
+    justify-self: center;
+    width: min-content;
+    text-align: center;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: bold;
   }
 
   path {
@@ -53,12 +62,12 @@
     font-size: 75%;
     width: 6em;
     height: 6em;
-    background-color: rgba(blue, .5);
+    background-color: rgba(white, .75);
+    border: .1em solid var(--brand-color);
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
     font-weight: bold;
     text-transform: uppercase;
     margin: -1em;
