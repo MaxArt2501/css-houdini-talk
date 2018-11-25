@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
+    "gh-pages": "^2.0.1",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.10.0",
     "gulp-sass": "^4.0.2",

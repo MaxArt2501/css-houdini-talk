@@ -6,6 +6,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const cleanCSS = require('gulp-clean-css');
 const rimraf = require('rimraf');
 const browserSync = require('browser-sync');
+const ghPages = require('gh-pages');
 
 const { src, dest } = gulp;
 const task = gulp.task.bind(gulp);
@@ -84,6 +85,14 @@ task('serve', [ 'default' ], () => {
   watch('src/{presentations,slides}/**/*.html', [ 'slides+reload' ]);
   watch('src/js/**/*.js', [ 'js+reload' ]);
   watch('static/**/*', [ 'static+reload' ]);
+});
+
+task('publish', [ 'default' ], () => {
+  ghPages.publish('public', error => {
+    if (!error) {
+      console.log('Published on branch gh-pages');
+    }
+  });
 });
 
 task('watch:css', () => {
