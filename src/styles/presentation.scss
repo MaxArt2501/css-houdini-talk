@@ -498,3 +498,17 @@ ripple-button {
     font-size: 50%;
   }
 }
+
+.links {
+  font-size: 75%;
+  align-self: center;
+
+  li {
+    margin-top: .5em;
+  }
+  a {
+    display: block;
+    width: fit-content;
+    padding-left: 1.75em;
+  }
+}
