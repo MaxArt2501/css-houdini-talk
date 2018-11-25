@@ -1,0 +1,174 @@
+<p-slide class="justify-center">
+  <h1 class="our-header">Animation Worklet</h1>
+</p-slide>
+<p-slide>
+  <div class="animation-type self-center">CSS Animations</div>
+  <p-fragment class="self-center">
+    <div class="animation-type"><code>requestAnimationFrame</code></div>
+    <p-notes>Not really but eh, there's 'animation' in the name</p-notes>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <div class="animation-type">Web Animation API</div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">Web Animation API</h2>
+  <p-fragment><p>Can do a lot&hellip;</p></p-fragment>
+  <p-fragment><p>Could do <em>much more!</em></p></p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center" style="margin: 0;">Animation types</h3>
+  <div class="animation-showcase">
+    <p-fragment>
+      <div class="cage" effect="linear">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="ease">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="steps(4, start)">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="cubic-bezier(0, 1, .5, 1.5)">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <div class="animation-showcase">
+    <div class="cage" effect="normal">
+      <div class="endpoint"></div>
+      <div class="endpoint" style="top: 0; left: 100%;"></div>
+    </div>
+    <p-fragment>
+      <div class="cage" effect="reverse">
+        <div class="endpoint" style="top: 0"></div>
+        <div class="endpoint" style="top: 100%; left: 100%;"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="alternate">
+        <div class="endpoint"></div>
+        <div class="endpoint" style="top: 0; left: 50%;"></div>
+        <div class="endpoint" style="top: 100%; left: 100%;"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="alternate-reverse">
+        <div class="endpoint" style="top: 0;"></div>
+        <div class="endpoint" style="top: 100%; left: 50%;"></div>
+        <div class="endpoint" style="top: 0; left: 100%;"></div>
+      </div>
+    </p-fragment>
+  </div>
+  <p-fragment class="overlay-banner" style="font-size: 2em;">
+    We can break this 💪
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center" style="margin: 0;">Animations with Houdini</h3>
+  <div class="animation-showcase">
+    <p-fragment>
+      <div class="cage" effect="sine">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="bounce">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="projectile">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="random">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <pre class="big"><code class="language-js">registerAnimator('my-animator', class {</code>
+  <p-fragment><code class="language-js">constructor(options = {}) {
+    this.options = options;
+  }</code></p-fragment>
+  <p-fragment><code class="language-js">animate(currentTime, effect) {
+    const newTime = bendTheTime(currentTime);
+    effect.localTime = newTime;
+  }</code></p-fragment>
+});</pre>
+</p-slide>
+<p-slide>
+  <pre class="big"><code class="language-js">await CSS.animationWorklet.addModule('./my-anim.js');</code>
+
+<p-fragment><code class="language-js">const effect = new KeyframeEffect(el, frames);</code></p-fragment>
+<p-fragment><code class="language-js">const animation = new WorkletAnimation(
+  'my-animator',
+  effect
+);</code></p-fragment>
+
+<p-fragment><code class="language-js">animation.play();</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Stateful animators</h4>
+  <pre class="big"><code class="language-js">class MyAnimator {</code>
+  <p-fragment><code class="language-js">constructor(opts, state = {}) {
+    this._state = state;
+  }</code></p-fragment>
+
+  <p-fragment><code class="language-js">get state() { return this._state; }</code></p-fragment>
+}</pre>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Timelines 💫</h4>
+  <pre class="big self-center"><code class="language-js">new Animation(</code>
+  <p-fragment><code class="language-js">effect,</code></p-fragment>
+  <p-fragment><code class="language-js">animationOptions,</code></p-fragment>
+  <p-fragment><code class="language-js">document.timeline</code></p-fragment>
+);</code></pre>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">What is "time"? 🤔</h2>
+  <p-fragment class="self-center">
+    <div class="time-cursor"></div>
+    <p-notes>Extend the concept to a cursor in an interval</p-notes>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header"><code>ScrollTimeline</code> 🎉</h4>
+  <pre class="big self-center"><code class="language-js">const timeline = new ScrollTimeline({</code>
+  <p-fragment><code class="language-js">scrollSource: document.scrollElement,</code></p-fragment>
+  <p-fragment><code class="language-js">orientation: 'vertical',</code></p-fragment>
+  <p-fragment><code class="language-js">timeRange: 1000</code></p-fragment>
+});</code></pre>
+  <p-notes>We <em>must</em> use it in a worklet animation, though</p-notes>
+</p-slide>
+<p-slide class="justify-center">
+  <div class="reading-marker-wrapper self-center">
+    <div role="progressbar" class="reading-marker"></div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed ullamcorper morbi tincidunt ornare massa eget. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Sed adipiscing diam donec adipiscing tristique risus nec. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Porta non pulvinar neque laoreet. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Adipiscing at in tellus integer feugiat scelerisque. Orci a scelerisque purus semper. Proin fermentum leo vel orci porta non. In massa tempor nec feugiat nisl pretium fusce id. Tortor posuere ac ut consequat semper viverra. Ac orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum.</p>
+    <p>Nullam ac tortor vitae purus. A lacus vestibulum sed arcu non odio. Lectus vestibulum mattis ullamcorper velit sed. Tristique sollicitudin nibh sit amet commodo nulla facilisi. Pulvinar mattis nunc sed blandit libero. Nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc. Facilisis mauris sit amet massa vitae tortor. Blandit turpis cursus in hac habitasse platea dictumst quisque sagittis. Vel pharetra vel turpis nunc eget lorem dolor sed. Amet justo donec enim diam vulputate ut pharetra sit amet. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus. Sed elementum tempus egestas sed. In tellus integer feugiat scelerisque. Elit sed vulputate mi sit amet mauris commodo quis.</p>
+    <p>Auctor neque vitae tempus quam. Turpis tincidunt id aliquet risus feugiat in ante metus. Libero nunc consequat interdum varius sit amet mattis. Blandit cursus risus at ultrices. Morbi tristique senectus et netus et. Nulla at volutpat diam ut. Eget est lorem ipsum dolor sit amet consectetur adipiscing elit. Tempus egestas sed sed risus pretium quam. Feugiat nibh sed pulvinar proin gravida hendrerit. Ut enim blandit volutpat maecenas volutpat blandit aliquam. Odio eu feugiat pretium nibh ipsum consequat nisl vel. Elit ut aliquam purus sit amet. Dignissim diam quis enim lobortis scelerisque fermentum. Porttitor leo a diam sollicitudin. Amet massa vitae tortor condimentum lacinia. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin. Metus aliquam eleifend mi in nulla posuere sollicitudin. Dolor magna eget est lorem ipsum dolor sit amet. Vulputate ut pharetra sit amet aliquam id diam maecenas.</p>
+    <p>Et molestie ac feugiat sed lectus vestibulum. Ut lectus arcu bibendum at varius vel pharetra vel. Vitae tortor condimentum lacinia quis vel eros donec. Elit sed vulputate mi sit. Vel pharetra vel turpis nunc eget lorem dolor. Massa vitae tortor condimentum lacinia quis vel eros donec. Purus in massa tempor nec. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Volutpat blandit aliquam etiam erat velit scelerisque in. Enim diam vulputate ut pharetra sit amet aliquam id. Convallis a cras semper auctor neque vitae tempus quam. Pellentesque sit amet porttitor eget dolor. Sollicitudin ac orci phasellus egestas. Ultricies integer quis auctor elit sed vulputate mi sit. Leo in vitae turpis massa sed elementum tempus. Nisi lacus sed viverra tellus. Eget nulla facilisi etiam dignissim diam quis enim lobortis. In nisl nisi scelerisque eu ultrices vitae auctor eu augue. Fames ac turpis egestas integer eget. A pellentesque sit amet porttitor eget.</p>
+    <p>Dignissim enim sit amet venenatis urna. In nibh mauris cursus mattis molestie a iaculis at. Vitae tortor condimentum lacinia quis vel eros donec ac. Leo duis ut diam quam nulla porttitor massa. Semper eget duis at tellus at urna condimentum mattis pellentesque. Non consectetur a erat nam at lectus urna. Fermentum leo vel orci porta non pulvinar neque. Ornare arcu odio ut sem nulla pharetra. Sit amet nisl suscipit adipiscing bibendum est ultricies integer. Facilisis mauris sit amet massa vitae tortor condimentum lacinia quis. At tellus at urna condimentum mattis pellentesque id nibh. Nec sagittis aliquam malesuada bibendum arcu vitae. Arcu non sodales neque sodales ut etiam sit amet nisl. Vulputate odio ut enim blandit volutpat maecenas. Magna ac placerat vestibulum lectus mauris ultrices eros. Varius quam quisque id diam vel quam elementum pulvinar. Arcu dui vivamus arcu felis bibendum ut tristique. Pharetra diam sit amet nisl suscipit. Blandit aliquam etiam erat velit. Ipsum nunc aliquet bibendum enim facilisis gravida neque convallis a.</p>
+  </div>
+</p-slide>
+<p-slide>
+  <h3 class="our-header"><em>Other</em> timelines? 🤞</h3>
+  <p-fragment class="self-center" style="margin: 2em 0;">
+    <big><code>InputTimeline</code></big>
+  </p-fragment>
+  <p-fragment class="overlay-banner" style="font-size: 2em;">
+    Not here yet&hellip;
+  </p-fragment>
+</p-slide>

@@ -14,3 +14,5 @@ function propToOption(name, prefix) {
   const re = new RegExp(`^--${prefix ? prefix + '-' : ''}`);
   return name.replace(re, '').replace(/-[a-z]/g, m => m[1].toUpperCase());
 }
+
+export const ANIMATION_PERIOD = 2000;

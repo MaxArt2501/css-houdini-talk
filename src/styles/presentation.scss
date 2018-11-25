@@ -326,3 +326,175 @@ ripple-button {
     }
   }
 }
+
+.animation-type {
+  height: 3em;
+  width: 15em;
+  margin: .5em 0;
+  border: .1em solid var(--brand-color);
+  border-radius: .5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.animation-showcase {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.cage {
+  width: 4.2em;
+  height: 4.2em;
+  border: .1em solid #f60;
+  position: relative;
+  background-size: contain;
+  background-clip: padding-box;
+  background-repeat: no-repeat;
+  margin: 1em auto 0;
+}
+[effect]::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 4em;
+  height: 6em;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+[effect]::before {
+  content: attr(effect);
+  position: absolute;
+  top: -1.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .5em;
+  white-space: nowrap;
+}
+
+.endpoint,
+.ball {
+  width: .5em;
+  height: .5em;
+  border-radius: .25em;
+  margin: -.25em;
+  background-color: green;
+  position: absolute;
+  top: 100%;
+}
+.ball {
+  background-color: navy;
+  transform: translate(calc(4em * var(--axis-x, 0)), calc(-4em * var(--axis-y, 0)));
+}
+
+[effect="linear"] {
+  &::after {
+    background-image: url('data:image/svg+xml,<svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg"><line stroke-width=".01" stroke="green" stroke-dasharray=".03 .01" x1="0" y1="1" x2="1" y2="0"/></svg>');
+  }
+  > .ball {
+    animation: axis-x 2s linear infinite, axis-y 2s linear infinite;
+  }
+}
+
+[effect="ease"] {
+  &::after {
+    background-image: url('data:image/svg+xml,<svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg"><path stroke-width=".01" stroke="green" stroke-dasharray=".03 .01" fill="none" d="M0,1C.25,.9, .25,0 1,0"/></svg>');
+  }
+  > .ball {
+    animation: axis-x 2s linear infinite, axis-y 2s ease infinite;
+  }
+}
+
+[effect="steps(4, start)"] {
+  &::after {
+    background-image: url('data:image/svg+xml,<svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg"><path stroke-width=".01" stroke="green" stroke-dasharray=".03 .01" fill="none" d="M0,.75h.25m0,-.25h.25m0,-.25h.25m0,-.25h.25"/></svg>');
+  }
+  > .ball {
+    animation: axis-x 2s linear infinite, axis-y 2s steps(4, start) infinite;
+  }
+}
+
+[effect="cubic-bezier(0, 1, .5, 1.5)"] {
+  &::after {
+    background-image: url('data:image/svg+xml,<svg viewBox="0 -.2 1 1.2" xmlns="http://www.w3.org/2000/svg"><path stroke-width=".01" stroke="green" stroke-dasharray=".03 .01" fill="none" d="M0,1C0,0 .5,-.5 1,0"/></svg>');
+  }
+  > .ball {
+    animation: axis-x 2s linear infinite, axis-y 2s cubic-bezier(0, 1, .5, 1.5) infinite;
+  }
+}
+
+[effect="sine"]::after {
+  background-image: url('data:image/svg+xml,<svg viewBox="0 -.2 1 1.2" xmlns="http://www.w3.org/2000/svg"><path stroke-width=".01" stroke="green" stroke-dasharray=".03 .01" fill="none" d="M0,1C.16306589674228442,.48771337674340753 .31904635523723557,0 .5,0C.6809536447627644,0 .8369341032577156,.48771337674340753 1,1"/></svg>');
+}
+
+[effect="bounce"]::after {
+  background-image: url('data:image/svg+xml,<svg viewBox="0 -.2 1 1.2" xmlns="http://www.w3.org/2000/svg"><path stroke-width=".01" stroke="green" stroke-dasharray=".03 .01" fill="none" d="M0,1Q.1,-1 .2,1Q.3,0 .4,1Q.5,.5 .6,1Q.7,.75 .8,1Q.9,.875 1,1"/></svg>');
+}
+
+[effect="projectile"]::after {
+  background-image: url('data:image/svg+xml,<svg viewBox="0 -.2 1 1.2" xmlns="http://www.w3.org/2000/svg"><path stroke-width=".01" stroke="green" stroke-dasharray=".03 .01" fill="none" d="M0,1Q.65,-1 1.3,1"/></svg>');
+}
+
+[effect="random"]::after {
+  background-image: url('data:image/svg+xml,<svg viewBox="0 -.2 1 1.2" xmlns="http://www.w3.org/2000/svg"><path stroke-width=".01" stroke="green" stroke-dasharray=".03 .01" fill="none" d="M0,0.7829210351062204L0.11068674140673758,0.5538387289772171 0.12917300279175212,0.36752141161590945 0.31206195690861155,0.9323699785697925 0.82530732110637,0.3422303514948397 0.9224856956140005,0.865522721657085 0.9401393760369526,0.8403839430216551 1,0.33293161385965686"/></svg>');
+}
+
+@keyframes axis-x {
+  from { --axis-x: 0; }
+  to { --axis-x: 1; }
+}
+@keyframes axis-y {
+  from { --axis-y: 0; }
+  to { --axis-y: 1; }
+}
+
+.time-cursor {
+  margin: 2em 0;
+  width: 15em;
+  height: 1em;
+  position: relative;
+  border-style: solid;
+  border-width: 0 .2em;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: .4em;
+    width: 100%;
+    height: .2em;
+    background-color: var(--brand-color);
+  }
+
+  &::after {
+    content: "☝";
+    position: absolute;
+    top: .5em;
+    transform: translateX(-50%);
+    animation: timeline 4s infinite forwards;
+  }
+}
+
+@keyframes timeline {
+  0% { left: 0; }
+  20% { left: 50%; }
+  40% { left: 30%; }
+  60% { left: 70%; }
+  80% { left: 65%; }
+  100% { left: 100%; }
+}
+
+.reading-marker {
+  background-color: var(--brand-color);
+  height: .5em;
+  position: sticky;
+  top: 0;
+
+  &-wrapper {
+    width: 20em;
+    height: 15em;
+    overflow: auto;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50%;
+  }
+}
