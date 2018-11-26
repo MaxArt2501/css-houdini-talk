@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>The tricks of Houdini: a wagic wand for the future of CSS</title>
+  <base href="..">
+  <link rel="shortcut icon" href="img/p-slides.png" type="image/png">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/presentation.css">
+  <link rel="stylesheet" href="vendor/prismjs/themes/prism-okaidia.css">
+</head>
+
+<body>
+  <p-deck>
+    slide:cover
+    slide:ie
+    slide:houdini
+    slide:paint
+    slide:typed-om
+    slide:props-values
+    slide:interval
+    slide:layout
+    slide:animation
+    slide:font-metrics
+    slide:parser
+    slide:links
+  </p-deck>
+  <div role="progressbar" class="presentation-progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  <div role="toolbar" class="presentation-toolbar">
+    <button type="button" class="toggle-mode" title="Toggle speaker mode" aria-label="Toggle speaker mode (Alt-M)">
+      <svg viewBox="0 0 1 1"><path stroke-width="0.1" stroke="currentColor" fill="none" d="M.05 .5h.6v-.45h-.6v.9h.6v-.45M.75 .05h.25M.75 .2h.25M.75 .35h.25"/></svg>
+    </button>
+    <button type="button" class="fullscreen" title="Toggle fullscreen mode" aria-label="Toggle fullscreen mode">
+      <svg viewBox="0 0 1 1"><g stroke="currentColor" fill="none" stroke-width="0.1">
+        <path d="M.05 .3v-.25h.25M.7 .05h.25v.25M.95 .7v.25h-.25M.3 .95h-.25v-.25"/>
+        <path d="M.05 .3h.25v-.25M.7 .05v.25h.25M.95 .7h-.25v.25M.3 .95v-.25h-.25"/>
+      </g></svg>
+    </button>
+  </div>
+  <nav class="presentation-nav">
+    <button type="button" class="previous" title="Go backward" aria-label="Go backward"></button>
+    <button type="button" class="next" title="Go forward" aria-label="Go forward"></button>
+  </nav>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/presentation.js"></script>
+  <script async src="vendor/prismjs/prism.js"></script>
+</body>
+
+</html>

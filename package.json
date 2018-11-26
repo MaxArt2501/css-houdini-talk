@@ -1,7 +1,7 @@
 {
-  "name": "p-slides-boilerplate",
+  "name": "css-houdini-talk",
   "version": "0.0.0",
-  "description": "Presentation boilerplate using P-Slides",
+  "description": "The tricks of Houdini: a wagic wand for the future of CSS",
   "scripts": {
     "build": "gulp",
     "clean": "gulp clean",

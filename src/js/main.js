@@ -46,7 +46,7 @@ function toggleNavButtons() {
 function changeHash(slide) {
   const slideRef = slide.id || deck.currentIndex;
   const { mode } = deck;
-  location.href = '#' + slideRef + (mode === 'presentation' ? '' : `&mode=${mode}`);
+  location.hash = '#' + slideRef + (mode === 'presentation' ? '' : `&mode=${mode}`);
 }
 const lazyAttribs = [ 'src', 'srcset', 'href' ];
 const lazySelector = lazyAttribs.map(attrib => `[data-lazy-${attrib}]`).join();
