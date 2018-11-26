@@ -63,6 +63,9 @@ function loadLazyMedia(root) {
     }
   }
 }
+if (matchMedia('print').matches) {
+  loadLazyMedia(deck);
+}
 deck.addEventListener('p-slides.slidechange', ({ detail: { slide } }) => {
   loadLazyMedia(slide);
   changeHash(slide);

@@ -36,6 +36,13 @@
   -webkit-text-fill-color: white;
   -webkit-text-stroke-color: black;
   -webkit-text-stroke-width: .05em;
+
+  @media print {
+    -webkit-text-fill-color: unset;
+    -webkit-text-stroke-color: unset;
+    -webkit-text-stroke-width: unset;
+    color: white;
+  }
 }
 
 .full-media {
@@ -49,6 +56,9 @@
 
 .blink {
   animation: blink 1s steps(1) infinite;
+  @media print {
+    animation: none;
+  }
 }
 
 @keyframes blink {

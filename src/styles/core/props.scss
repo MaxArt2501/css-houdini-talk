@@ -5,6 +5,7 @@
   --sliding-duration: calc(500ms + 2000ms * var(--slide-debug, 0));
   --fragment-duration: calc(300ms + 1200ms * var(--slide-debug, 0));
   --slide-font-size: 4;
+  --slide-print-width: 297mm;
 
   --progress-color: #f60;
   --controls-color: gray;
