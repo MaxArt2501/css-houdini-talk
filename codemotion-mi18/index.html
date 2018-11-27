@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>The tricks of Houdini: a wagic wand for the future of CSS</title>
+  <base href="..">
+  <link rel="shortcut icon" href="img/p-slides.png" type="image/png">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+  <link rel="stylesheet" href="css/presentation.css">
+  <link rel="stylesheet" href="vendor/prismjs/themes/prism-okaidia.css">
+</head>
+
+<body>
+  <p-deck>
+    <p-slide class="cover">
+  <div class="cover-top">
+    <div class="cover-location">
+      Milan | November 29 - 30, 2018
+      <img src="img/codemotion.png" alt="Codemotion logo">
+    </div>
+    <h1>
+      The tricks of Houdini
+      <small>A magic wand for the future of CSS</small>
+    </h1>
+    <h2>Massimo Artizzu @MaxArt2501</h2>
+  </div>
+  <div class="cover-bottom">
+    <img src="img/codemotion-milan.png" alt="Codemotion Milan">
+    <img src="img/license.svg" alt="Creative Commons, Attribution, Non-Commercial, Share-Alike">
+  </div>
+</p-slide>
+    <p-slide>
+  <h4 class="our-header">Let's talk about&hellip;</h4>
+  <p-fragment class="js-heading" style="font-size: 3em;">
+    JavaScript
+  </p-fragment>
+  <p-fragment>
+    <img data-lazy-src="./img/vega.gif" alt="Vincent Vega confused" class="vega">
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h1 class="center">Wait!<br>It gets better!</h1>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Let's talk about <span class="js-heading">JavaScript</span>&hellip;</h4>
+  <p-fragment class="center bold" style="font-size: 1.5em;">
+    on Internet Explorer <img data-lazy-src="./img/ie.png" alt="IE logo" class="inline-logo">
+  </p-fragment>
+  <p-fragment class="center bold" style="font-size: 6em;">6</p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Even Microsoft had good ideas!</h4>
+  <p-fragment class="center">
+    <img data-lazy-src="./img/seriously.svg" alt="David Silverman's meme face" style="height: 5em;">
+  </p-fragment>
+  <p-fragment>
+    Usually, with a <em>very poor execution&hellip;</em>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Internet Explorer</h3>
+  <p>
+    introduced 2 ways J<s>ava</s>Script could extend CSS:
+  </p>
+  <ul class="self-center">
+    <li>
+      <p-fragment>👉 expressions;</p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 behaviors.</p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">IE's CSS expressions</h3>
+  <pre><code class="language-css">.indicator {
+  width: 100%;
+  color: expression(this.clientWidth > 400 ? 'red' : 'blue');
+}</code></pre>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">IE's CSS behaviors</h3>
+  <pre><code class="language-html">&lt;!-- boxsizing.htc -->
+&lt;component lightWeight="true">
+&lt;attach event="onpropertychange" onevent="checkPropertyChange()" />
+&lt;attach event="ondetach" onevent="restore()" />
+&lt;script type="text/javascript">//&lt;![CDATA[
+function checkPropertyChange(){ ... }
+...
+//]]>&lt;/script>
+&lt;/component></code></pre>
+</p-slide>
+<p-slide>
+  <h1 class="center">👍</h1>
+  <ul class="self-center">
+    <li>
+      <p-fragment>✅ extensible CSS;</p-fragment>
+    </li>
+    <li>
+      <p-fragment>✅ reusable directives;</p-fragment>
+    </li>
+    <li>
+      <p-fragment>✅ declarative code.</p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h1 class="center">👎</h1>
+  <ul class="self-center">
+    <li>
+      <p-fragment>❌ IE only;</p-fragment>
+    </li>
+    <li>
+      <p-fragment>
+        😰 <em>atrocious</em> performance;
+        <p-notes>We're talking about IE, after all</p-notes>
+      </p-fragment>
+    </li>
+    <li>
+      <p-fragment>
+        😭 used to crash the browser <em>a lot</em>;
+        <p-notes>Because whatever, uncostrained crap was allowed</p-notes>
+      </p-fragment>
+    </li>
+    <li>
+      <p-fragment>
+        😱 a nightmare to debug 🧟‍
+        <p-notes>Anyone remembers IE5's devtools? 'cors not, because there were <em>none</em></p-notes>
+      </p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide class="unpadded justify-end">
+  <img data-lazy-src="./img/kill-it-with-fire.webp" alt="Hank Scorpio flamethrowing" class="full-media">
+  <h1 class="meme-text self-center blink">KILL IT WITH FIRE</h1>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">What now?</h2>
+  <p class="center">CSS is evolving:</p>
+  <ul class="self-center">
+    <li>
+      <p-fragment>👍 slowly, but steady</p-fragment>
+    </li>
+    <li>
+      <p-fragment>👌 with a clear process</p-fragment>
+    </li>
+    <li>
+      <p-fragment>🤝 involving all parties.</p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h2 class="center">But no matter what the W3C does</h2>
+  <p-fragment class="center">CSS will <em>never</em> cover everyone's use cases.</p-fragment>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">In short&hellip;</h2>
+  <p class="center">We're still like this:</p>
+  <img data-lazy-src="./img/peter-griffin-css.gif" alt="Peter Griffin meddling with blinds" class="self-center" style="height: 6em;">
+</p-slide>
+    <p-slide>
+  <h3 class="our-header">So, what can we do?</h3>
+  <div class="center" style="font-size: 2.5em">🤔</div>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">Enter Houdini</h2>
+  <p>A project inside the W3C to expose parts of the CSS engine to web developers</p>
+  <p-fragment class="center">(7 parts, to be precise)</p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Houdini modules</h4>
+  <ul class="self-center">
+    <li><p-fragment>👉 Paint API</p-fragment></li>
+    <li><p-fragment>👉 Typed OM</p-fragment></li>
+    <li><p-fragment>👉 Properties & Values API</p-fragment></li>
+    <li><p-fragment>👉 Layout API</p-fragment></li>
+    <li><p-fragment>👉 AnimationWorklet</p-fragment></li>
+    <li><p-fragment>👉 Parser API</p-fragment></li>
+    <li><p-fragment>👉 Font Metrics API</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide class="justify-center">
+  <div class="rendering-cycle">
+    <p-fragment>Style</p-fragment>
+    <p-fragment>Layout</p-fragment>
+    <p-fragment>Paint</p-fragment>
+    <p-fragment>Composite</p-fragment>
+    <svg viewBox="0 0 10 10">
+      <path d="M0,5A5,5 0 1 1 5,10l-.5,-.5 .5,-.5A4,4 0 1 0 1,5Z"/>
+    </svg>
+    <span>Rendering cycle</span>
+  </div>
+  <p-fragment class="overlay-banner" style="font-size: 200%;">
+    Collaboration effort 🤝
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">Worklets</h2>
+  <p>Think of Workers, but lightweight:</p>
+  <ul class="two-columns self-center">
+    <li><p-fragment>
+      ❌ no DOM et al.
+      <p-notes>e.g. events, <code>navigator</code>, <code>location</code>&hellip;</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>
+      ❌ no <code>fetch()</code>
+      <p-notes>Also no dynamic <code>import</code>: it's in the language, but always rejects</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>
+      ❌ no <code>postMessage</code>
+      <p-notes>Meaning you can't communicate with the main thread</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>
+      ❌ no storage
+      <p-notes>e.g. <code>localStorage</code>, IndexedDB, caches&hellip;</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>❌ no <code>setTimeout</code></p-fragment></li>
+    <li><p-fragment>
+      ❌ no side effects
+      <p-notes>e.g. WebRTC, WebUSB, channels, crypto&hellip;</p-notes>
+    </p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide class="justify-start">
+  <h1 class="meme-text center">Are you ready?</h1>
+  <video data-lazy-src="img/ready.mp4" autoplay loop class="full-media"></video>
+</p-slide>
+    <p-slide class="justify-center">
+  <h1 class="our-header">Paint API</h1>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">What's that for?</h4>
+  <video data-lazy-src="img/bob-ross.mp4" autoplay loop style="height: 8em"></video>
+  <p-notes>Allows to <em>draw</em> an image, to be used as a background, a border, a mask&hellip;</p-notes>
+</p-slide>
+<p-slide>
+  <div class="two-columns">
+    <div class="delaunay-sample"></div>
+    <p-fragment class="self-center">
+      <pre style="font-size: 40%;"><code class="language-css">.delaunay {
+  background-color: #f60;
+  background-image: paint(delaunay);
+}</code></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <pre><code class="language-js">// delaunay.js
+class DelaunayModule {</code>
+<p-fragment><code class="language-js">  paint(context, geometry, properties) { ... }
+
+</code></p-fragment><p-fragment><code class="language-js">  static get inputProperties() {
+    return [ '--delaunay-point-area', ... ];
+  }</code></p-fragment>
+}
+<p-fragment><code class="language-js">
+registerPaint('delaunay', DelaunayModule);
+</code></p-fragment>
+<p-fragment><code class="language-js">// main.js
+CSS.paintWorklet.addModule('./delaunay.js').then(...);
+</code></p-fragment></pre>
+  <p-notes>Of course the module must adhere to the same-origin policy, must be on https or localhost, yadda yadda&hellip;</p-notes>
+</p-slide>
+<p-slide>
+  <h4 class="our-header"><code>paint(context, geometry, properties)</code></h4>
+  <p><code>context</code> is a stripped-down <code>CanvasRenderingContext2D</code></p>
+  <ul class="self-center">
+    <li><p-fragment>❌ no text capabilities</p-fragment></li>
+    <li><p-fragment>❌ no image manipulation</p-fragment></li>
+    <li><p-fragment>😥 <em>including</em> reading from the canvas itself</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <div>👉 <code>geometry</code> has just two numeric properties:</div>
+  <p-fragment class="self-center"><p>↔ <code>width</code> and ↕ <code>height</code></p></p-fragment>
+  <p-fragment><p>
+      👉 <code>properties</code> is a <code>Map</code> of the CSS properties given by <code>inputProperties</code>
+    <p-fragment>in the <em>new</em> object model.</p-fragment>
+  </p></p-fragment>
+  <p-fragment class="self-center"><p>Can be custom <em>and</em> native CSS properties! 🙌</p></p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Where can I use it?</h4>
+  <ul class="self-center">
+    <li><p-fragment>👉 <code>background-image</code></p-fragment></li>
+    <li><p-fragment>👉 <code>border-image</code></p-fragment></li>
+    <li><p-fragment>👉 <code>mask-image</code></p-fragment></li>
+    <li><p-fragment>👉 <code>list-style-image</code></p-fragment></li>
+    <li><p-fragment>👉 <code>::before</code> and <code>::after</code></p-fragment></li>
+    <li><p-fragment>&hellip; possibly <em>anything</em> that can accept a <code>url()</code></p-fragment></li>
+    <li><p-fragment>❌ except <code>cursor</code></code></p-fragment></li>
+  </ul>
+  <p-notes>Some of these behave weirdly, but kinda work.
+    Take note there's must be <em>something</em> to paint.</p-notes>
+</p-slide>
+    <p-slide class="justify-center">
+  <h1 class="our-header">Typed OM</h1>
+</p-slide>
+<p-slide>
+  <pre><code class="language-js">element.style.fontSize = '20px';</code></pre>
+  <p-fragment>
+    <div class="center">becomes</div>
+    <pre><code class="language-js">element.attributeStyleMap.set('font-size', CSS.px(20));</code></pre>
+  </p-fragment>
+  <p-fragment class="center" style="flex: 1 0 0">
+    <img data-lazy-src="./img/confused.webp" alt="Guy looking confused" style="height: 100%">
+  </p-fragment>
+  <p-notes>How is <em>that</em> an improvement?!</p-notes>
+</p-slide>
+<p-slide>
+  <div class="center">One word:</div>
+  <p-fragment>
+    <h1 class="center">Performance</h1>
+  </p-fragment>
+  <p-fragment>
+    <p class="center">and other stuff</p>
+  </p-fragment>
+  <p-fragment>
+    <p class="center"><small>(ok, that's 4)</small></p>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">What usually happens</h4>
+  <pre class="big self-center"><code class="language-js">const width = someComputation();
+element.style.width = `${width}px`;</code></pre>
+  <p class="center">
+    <p-fragment>number</p-fragment>
+    <p-fragment>➡ string</p-fragment>
+    <p-fragment>➡ CSS parse</p-fragment>
+    <p-fragment>➡ CSS value</p-fragment>
+  </p>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">What happens with Typed OM</h4>
+  <pre class="big self-center"><code class="language-js">const width = someComputation();
+element.attributeStyleMap.set('width', CSS.px(width));</code></pre>
+  <p class="center">
+    <p-fragment>number</p-fragment>
+    <p-fragment>
+      ➡ <span class="crossed">string</span>
+      ➡ <span class="crossed">CSS parse</span>
+      ➡ CSS value
+    </p-fragment>
+  </p>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">So what's <code>CSS.px()</code>?</h4>
+  <pre class="big">&gt; <code class="language-js">CSS.px(10)</code>
+&lt; <code>&#9654; <em>CSSUnitValue</em></code> <code class="language-js">{value: 10, unit: "px"}</code></pre>
+  <p-fragment>
+    <code>.cm()</code>, <code>.deg()</code>, <code>.em()</code>, <code>.fr()</code>, <code>.kHz()</code>, <code>.ms()</code>, <code>.number()</code>, <code>.percent()</code>, <code>.vh()</code>, &hellip;
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Typed OM's types (partial list)</h4>
+  <ul class="self-center">
+    <li><p-fragment>
+      👉 <code>CSSKeywordValue</code>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>CSSMathValue</code>
+      <p-notes>There are other helper classes to build complex <code>calc()</code> expressions</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>CSSTransformValue</code>
+      <p-notes>There are helper classes to build complex transformations too</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>CSSVariableReferenceValue</code>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>CSSUnparsedValue</code>
+      <p-notes>This is what you get for a custom property (normally)</p-notes>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>CSSStyleValue</code>
+      <p-notes>This is an opaque representation</p-notes>
+    </p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Style maps</h4>
+  <p>What's <code>.attributeStyleMap</code>?</p>
+  <p>
+    <p-fragment>It's a <code>Map</code></p-fragment>
+    <p-fragment>for style properties</p-fragment>
+  </p>
+  <p class="center"><big><p-fragment><code>StylePropertyMap</code></p-fragment></big></p>
+  <p-notes>It means you can set numbers, strings or typed values; and you get only typed values.</p-notes>
+</p-slide>
+<p-slide>
+  <p>There are two defined on elements:</p>
+  <ul class="self-center">
+    <li><p-fragment>
+      👉 <code>.attributeStyleMap</code>
+    </p-fragment></li>
+    <li><p-fragment style="margin-left: 2em">
+      ~ <code>.style</code>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>.computedStyleMap<p-fragment>()</p-fragment></code><p-notes>
+        I have no idea why the didn't call it <code>getComputedStyleMap</code>, if they didn't fear to be verbose
+      </p-notes>
+    </p-fragment></li>
+    <li><p-fragment style="margin-left: 2em">
+      ~ <code>getComputedStyle()</code>
+      <p-notes><code>.computedStyleMap()</code> also returns <em>clamped/adjusted</em> values
+        (e.g. for <code>opacity</code>, or rounded for <code>z-index</code> and so on)</p-notes>
+    </p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <ul class="self-center" style="font-size: 150%">
+    <li>☝ computed styles</li>
+    <li><p-fragment>✌ in CSS values</p-fragment></li>
+    <li><p-fragment>🤟 on the element</p-fragment></li>
+  </ul>
+  <p-notes>I couldn't find another hand emoji with 3 fingers out, Another candidate was the Spock hand</p-notes>
+</p-slide>
+<p-slide>
+  <h4 class="center">It's <code>.currentStyle</code> all over again!</h4>
+  <p-fragment class="self-center">&hellip; introduced by</p-fragment>
+  <p-fragment class="self-center" style="font-size: 2em">🥁</p-fragment>
+  <h2 class="center">
+    <p-fragment class="self-center">
+      <img data-lazy-src="./img/ie.png" alt="IE logo" class="inline-logo">
+      Internet Explorer <p-fragment><big>6</big></p-fragment>
+    </p-fragment>
+  </h2>
+  <p-notes>That had nothing to do with performance, though.</p-notes>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">And by the way</h3>
+  <p><code>paint(<span style="opacity: .5">ctx, geom,</span> <big>properties</big>)</code></p>
+  <p-fragment>That's a <code>StylePropertyMap</code> too.</p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Other perks</h4>
+  <ul>
+    <li>
+      <p-fragment>
+        🤔 Classic CSSOM always returns strings
+        <p-notes>Event for numeric values, like <code>opacity</code> or <code>z-index</code></p-notes>
+      </p-fragment>
+      <p-fragment style="display: block">
+        <pre class="big"><code class="language-js">el.style.opacity += 0.1; // oh noes!</code></pre>
+      </p-fragment>
+    </li>
+    <li style="margin-top: 1em">
+      <p-fragment>
+        💥 Invalid values now <em>throw</em>
+      </p-fragment>
+      <p-fragment style="display: block">
+        <pre class="big"><code class="language-js">el.attributeStyleMap.set('margin', 'foo'); // BOOM!</code></pre>
+      </p-fragment>
+    </li>
+  </ul>
+</p-slide>
+    <p-slide class="justify-center">
+  <h1 class="our-header">Properties and values</h1>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">#1: the cascade</h3>
+  <pre class="big self-center"><code class="language-css">.box {
+  width: 20em;
+  width: red;
+}</code></pre>
+  <p-fragment class="self-center">
+    <code class="crossed">width: red</code> gets ignored
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">What happens <em>now?</em></h3>
+  <pre class="big self-center"><code class="language-css">.box {
+  --box-width: 20em;
+  --box-width: red;
+  width: var(--box-width);
+}</code></pre>
+  <p-fragment class="self-center">
+    It's <code class="crossed">--box-width: 20em</code> that gets ignored!
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">#2: animations</h4>
+  <pre class="big self-center"><code class="language-css">.box { animation: streeetch 2s infinite; }
+@keyframes streeetch {
+  from { width: 10em; }
+  to   { width: 20em; }
+}</code></pre>
+  <p-fragment class="self-center">
+    <div class="the-box animated">BOX</div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-css">.box {
+  width: var(--box-width);
+  animation: streeetch 2s infinite;
+}
+@keyframes streeetch {
+  from { --box-width: 10em; }
+  to   { --box-width: 20em; }
+}</code></pre>
+  <p-fragment class="self-center">
+    <div class="the-box animated-wrong">BOX</div>
+  </p-fragment>
+</p-slide>
+<p-slide class="justify-center">
+  <h1 class="center">Why?<br>🤔</h1>
+  <p-notes><code>width</code> is <em>known</em> to be a length, while <code>--box-width</code> is not</p-notes>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Set the <em>type</em> of a custom property</h4>
+  <pre class="self-center big"><code class="language-js">CSS.registerProperty({</code>
+  <p-fragment><code class="language-js">name: '--box-width',</code></p-fragment>
+  <p-fragment><code class="language-js">syntax: '&lt;length>',</code></p-fragment>
+  <p-fragment><code class="language-js">initialValue: CSS.px(0),</code></p-fragment>
+  <p-fragment><code class="language-js">inherits: false</code></p-fragment>
+<code class="language-js">});</code></pre>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">All the syntaxes</h4>
+  <ul class="syntaxes">
+    <li><code>&ltcolor></code></li>
+    <li><code>&ltlength></code></li>
+    <li><code>&ltpercentage></code></li>
+    <li><code>&ltlength-percentage></code></li>
+    <li><code>&ltnumber></code></li>
+    <li><code>&ltinteger></code></li>
+    <li><code>&ltangle></code></li>
+    <li><code>&lttime></code></li>
+    <li><code>&lturl></code></li>
+    <li><code>&ltimage></code></li>
+    <li><code>&lttransform-list></code></li>
+    <li><code>&lttransform-function></code></li>
+    <li><code>&ltresolution></code></li>
+    <li><code>&ltcustom-ident></code></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Combinations too</h4>
+  <ul class="self-center">
+    <li><p-fragment>👉 Space separated: <code>&lt;color>+</code></p-fragment></li>
+    <li><p-fragment>👉 Comma separated: <code>&lt;url>#</code></p-fragment></li>
+    <li><p-fragment>👉 Type union: <code>&lt;number> | &lt;length></code></p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Bonus 🙌</h4>
+  <p class="center"><big>Interpolated custom properties <em>work with Paint API</em> 👌</big></p>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Next step 🔭</h4>
+  <p-fragment>
+    <p>Register properties <em>in CSS</em> 🎉</p>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-css">@property --box-width {
+  syntax: '&lt;length>';
+  initial-value: 0px;
+  inherits: false;
+}</code></pre>
+  </p-fragment>
+</p-slide>
+    <p-slide class="justify-center">
+  <h2 class="our-header">What we've seen so far</h2>
+</p-slide>
+<p-slide>
+  <div class="center">
+    <div role="heading"><big><b>🎨 Paint API</b></big></div>
+    <p>Draw images <em>fast</em> in a worklet</p>
+  </div>
+  <p-fragment class="center">
+    <div role="heading"><big><b>⚡ Typed OM</b></big></div>
+    <p>Fast and less error-prone values for CSS</p>
+  </p-fragment>
+  <p-fragment class="center">
+    <div role="heading"><big><b>🔢 Properties and Values</b></big></div>
+    <p>Making custom properties first class citizens</p>
+  </p-fragment>
+</p-slide>
+<p-slide class="justify-center">
+  <ripple-button class="self-center">Hello! 👋</ripple-button>
+</p-slide>
+<p-slide>
+  <pre><code class="language-js">registerPaint('ripple', class {
+  static get inputProperties() {
+    return [ '--ripple-color', ... ];
+  }
+  paint(ctx, { width, height }, props) {
+    const color = props.get('--ripple-color');
+    ...
+    ctx.fillStyle = color;
+    ctx.arc(centerX.value, centerY.value,
+      radius.value * farthest / 100, 0, Math.PI * 2);
+    ctx.fill();
+  }
+});</code></pre>
+</p-slide>
+<p-slide>
+  <div class="two-columns">
+    <pre><code class="language-js">CSS.registerProperty({
+  name: '--ripple-color',
+  syntax: '&lt;color>',
+  initialValue: '#fff0',
+  inherits: false
+});
+CSS.registerProperty({
+  name: '--ripple-radius',
+  syntax: '&lt;percentage>',
+  ...
+});
+...</code></pre>
+    <p-fragment>
+      <pre><code class="language-js">const duration =
+  button.computedStyleMap()
+    .get('--ripple-duration')
+    .to('ms').value;
+</code>
+<p-fragment><code class="language-js">button.animate([{
+  '--ripple-color': '#ffffff80',
+  '--ripple-radius': CSS.percent(0)
+}, {
+  '--ripple-color': '#ffffff00',
+  '--ripple-radius': CSS.percent(100)
+}], duration);</code></p-fragment></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h4 class="center">We can already do a lot, but&hellip;</h4>
+  <p-fragment>
+    <h1 class="center">Can I use it in production?</h1>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <img data-lazy-src="img/ihry.png" alt="Is Houdini Ready Yet screenshot" class="full-media">
+  <p-notes>There's a handy table reporting the status of Houdini's specs at W3C, and their implementation among the major browsers</p-notes>
+  <p-fragment class="overlay-banner" style="font-size: 2em;">
+    Is Houdini
+    <p-fragment>ready yet</p-fragment><p-fragment>.com
+      <p-notes>Serously, that's the site. Maintained by Surma, the guy who recently talked about Houdini at the last Chrome Dev Summit</p-notes>
+    </p-fragment>
+  </p-fragment>
+</p-slide>
+    <p-slide class="justify-center">
+  <h1 class="our-header">Layout API</h1>
+</p-slide>
+<p-slide>
+  <img src="img/mock-solid.webp" alt="A house crumbling because of termites" class="full-media">
+  <div class="overlay-banner" style="font-size: 250%;">Mock-solid 😰</div>
+</p-slide>
+<p-slide class="justify-center">
+  <div class="layout-explainer">
+    <p-fragment><code>display: layout(my-layout)</code></p-fragment>
+    <p-fragment>
+      <div class="layout-child">😉</div>
+      <div class="layout-child">😎</div>
+      <div class="layout-child">😋</div>
+      <div class="layout-child">🤣</div>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="justify-center">
+  <h4 class="our-header">Children and fragments</h4>
+  <div class="layout-fragments">
+    <p-fragment>
+      <div class="layout-fragment">Lorem ipsum</div>
+      <div class="layout-fragment">dolor sit</div>
+      <div class="layout-fragment">amet</div>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="justify-center">
+  <pre><code class="language-js">CSS.layoutWorklet.addModule('./my-layout.js')</code></pre>
+  <p-fragment>
+    <pre><code class="language-js">registerLayout('my-layout', class {</code>
+  <p-fragment><code class="language-js">async layout(children, edges, constraints, properties, breakToken) {</code>
+    <p-fragment><big>😱</big></p-fragment>
+  }</p-fragment>
+  <p-fragment><code class="language-js">async intrinsicSizes(children, edges, properties) { 🤔 }</code></p-fragment>
+  <p-fragment><code class="language-js">static inputProperties = ['--foo'];</code></p-fragment>
+  <p-fragment><code class="language-js">static childrenInputProperties = ['--bar'];</code></p-fragment>
+  <p-fragment><code class="language-js">static layoutOptions = { childDisplay: 'normal', sizing: 'block-like' };</code></p-fragment>
+});</code></pre>
+  </p-fragment>
+  <p-notes>I won't explain all this, it could be overwhelming. Doing a layout is a very complex task.</p-notes>
+  <p-notes>It would also be futile, as this spec is bound to change.</p-notes>
+</p-slide>
+<p-slide class="justify-center">
+  <div class="intrinsic-sizes">
+    <div class="min-content-size">Lorem ipsum dolor sit amet</div>
+    <div class="max-content-size">Lorem ipsum dolor sit amet</div>
+  </div>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">What <em>can</em> we do?</h4>
+  <ul class="self-center">
+    <li><p-fragment>👉 "blockify" the children (or not)</p-fragment></li>
+    <li><p-fragment>👉 give constraints to fragments</p-fragment></li>
+    <li><p-fragment>👉 position the children</p-fragment></li>
+    <li><p-fragment>👉 set the parent's <em>block</em> size</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide class="justify-center">
+  <h4 class="our-header">Easy masonry 🏠</h4>
+  <img src="img/masonry.webp" alt="Example of masonry layout" style="height: 8em;">
+  <p-fragment class="overlay-banner" style="font-size: 1.5em;">
+    googlechromelabs.github.io<br>/houdini-samples
+  </p-fragment>
+</p-slide>
+<p-slide class="justify-center">
+  <div class="carousel-wrapper">
+    <button type="button" class="carousel-previous">👈</button>
+    <div class="carousel"></div>
+    <button type="button" class="carousel-next">👉</button>
+  </div>
+</p-slide>
+    <p-slide class="justify-center">
+  <h1 class="our-header">Animation Worklet</h1>
+</p-slide>
+<p-slide>
+  <div class="animation-type self-center">CSS Animations</div>
+  <p-fragment class="self-center">
+    <div class="animation-type"><code>requestAnimationFrame</code></div>
+    <p-notes>Not really but eh, there's 'animation' in the name</p-notes>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <div class="animation-type">Web Animation API</div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">Web Animation API</h2>
+  <p-fragment><p>Can do a lot&hellip;</p></p-fragment>
+  <p-fragment><p>Could do <em>much more!</em></p></p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center" style="margin: 0;">Animation types</h3>
+  <div class="animation-showcase">
+    <p-fragment>
+      <div class="cage" effect="linear">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="ease">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="steps(4, start)">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="cubic-bezier(0, 1, .5, 1.5)">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <div class="animation-showcase">
+    <div class="cage" effect="normal">
+      <div class="endpoint"></div>
+      <div class="endpoint" style="top: 0; left: 100%;"></div>
+    </div>
+    <p-fragment>
+      <div class="cage" effect="reverse">
+        <div class="endpoint" style="top: 0"></div>
+        <div class="endpoint" style="top: 100%; left: 100%;"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="alternate">
+        <div class="endpoint"></div>
+        <div class="endpoint" style="top: 0; left: 50%;"></div>
+        <div class="endpoint" style="top: 100%; left: 100%;"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="alternate-reverse">
+        <div class="endpoint" style="top: 0;"></div>
+        <div class="endpoint" style="top: 100%; left: 50%;"></div>
+        <div class="endpoint" style="top: 0; left: 100%;"></div>
+      </div>
+    </p-fragment>
+  </div>
+  <p-fragment class="overlay-banner" style="font-size: 2em;">
+    We can break this 💪
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center" style="margin: 0;">Animations with Houdini</h3>
+  <div class="animation-showcase">
+    <p-fragment>
+      <div class="cage" effect="sine">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="bounce">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="projectile">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+    <p-fragment>
+      <div class="cage" effect="random">
+        <div class="ball"></div>
+      </div>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <pre class="big"><code class="language-js">registerAnimator('my-animator', class {</code>
+  <p-fragment><code class="language-js">constructor(options = {}) {
+    this.options = options;
+  }</code></p-fragment>
+  <p-fragment><code class="language-js">animate(currentTime, effect) {
+    const newTime = bendTheTime(currentTime);
+    effect.localTime = newTime;
+  }</code></p-fragment>
+});</pre>
+</p-slide>
+<p-slide>
+  <pre class="big"><code class="language-js">await CSS.animationWorklet.addModule('./my-anim.js');</code>
+
+<p-fragment><code class="language-js">const effect = new KeyframeEffect(el, frames);</code></p-fragment>
+<p-fragment><code class="language-js">const animation = new WorkletAnimation(
+  'my-animator',
+  effect
+);</code></p-fragment>
+
+<p-fragment><code class="language-js">animation.play();</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Stateful animators</h4>
+  <pre class="big"><code class="language-js">class MyAnimator {</code>
+  <p-fragment><code class="language-js">constructor(opts, state = {}) {
+    this._state = state;
+  }</code></p-fragment>
+
+  <p-fragment><code class="language-js">get state() { return this._state; }</code></p-fragment>
+}</pre>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Timelines 💫</h4>
+  <pre class="big self-center"><code class="language-js">new Animation(</code>
+  <p-fragment><code class="language-js">effect,</code></p-fragment>
+  <p-fragment><code class="language-js">animationOptions,</code></p-fragment>
+  <p-fragment><code class="language-js">document.timeline</code></p-fragment>
+);</code></pre>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">What is "time"? 🤔</h2>
+  <p-fragment class="self-center">
+    <div class="time-cursor"></div>
+    <p-notes>Extend the concept to a cursor in an interval</p-notes>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header"><code>ScrollTimeline</code> 🎉</h4>
+  <pre class="big self-center"><code class="language-js">const timeline = new ScrollTimeline({</code>
+  <p-fragment><code class="language-js">scrollSource: document.scrollElement,</code></p-fragment>
+  <p-fragment><code class="language-js">orientation: 'vertical',</code></p-fragment>
+  <p-fragment><code class="language-js">timeRange: 1000</code></p-fragment>
+});</code></pre>
+  <p-notes>We <em>must</em> use it in a worklet animation, though</p-notes>
+</p-slide>
+<p-slide class="justify-center">
+  <div class="reading-marker-wrapper self-center">
+    <div role="progressbar" class="reading-marker"></div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed ullamcorper morbi tincidunt ornare massa eget. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Sed adipiscing diam donec adipiscing tristique risus nec. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Porta non pulvinar neque laoreet. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Adipiscing at in tellus integer feugiat scelerisque. Orci a scelerisque purus semper. Proin fermentum leo vel orci porta non. In massa tempor nec feugiat nisl pretium fusce id. Tortor posuere ac ut consequat semper viverra. Ac orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum.</p>
+    <p>Nullam ac tortor vitae purus. A lacus vestibulum sed arcu non odio. Lectus vestibulum mattis ullamcorper velit sed. Tristique sollicitudin nibh sit amet commodo nulla facilisi. Pulvinar mattis nunc sed blandit libero. Nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc. Facilisis mauris sit amet massa vitae tortor. Blandit turpis cursus in hac habitasse platea dictumst quisque sagittis. Vel pharetra vel turpis nunc eget lorem dolor sed. Amet justo donec enim diam vulputate ut pharetra sit amet. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus. Sed elementum tempus egestas sed. In tellus integer feugiat scelerisque. Elit sed vulputate mi sit amet mauris commodo quis.</p>
+    <p>Auctor neque vitae tempus quam. Turpis tincidunt id aliquet risus feugiat in ante metus. Libero nunc consequat interdum varius sit amet mattis. Blandit cursus risus at ultrices. Morbi tristique senectus et netus et. Nulla at volutpat diam ut. Eget est lorem ipsum dolor sit amet consectetur adipiscing elit. Tempus egestas sed sed risus pretium quam. Feugiat nibh sed pulvinar proin gravida hendrerit. Ut enim blandit volutpat maecenas volutpat blandit aliquam. Odio eu feugiat pretium nibh ipsum consequat nisl vel. Elit ut aliquam purus sit amet. Dignissim diam quis enim lobortis scelerisque fermentum. Porttitor leo a diam sollicitudin. Amet massa vitae tortor condimentum lacinia. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin. Metus aliquam eleifend mi in nulla posuere sollicitudin. Dolor magna eget est lorem ipsum dolor sit amet. Vulputate ut pharetra sit amet aliquam id diam maecenas.</p>
+    <p>Et molestie ac feugiat sed lectus vestibulum. Ut lectus arcu bibendum at varius vel pharetra vel. Vitae tortor condimentum lacinia quis vel eros donec. Elit sed vulputate mi sit. Vel pharetra vel turpis nunc eget lorem dolor. Massa vitae tortor condimentum lacinia quis vel eros donec. Purus in massa tempor nec. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Volutpat blandit aliquam etiam erat velit scelerisque in. Enim diam vulputate ut pharetra sit amet aliquam id. Convallis a cras semper auctor neque vitae tempus quam. Pellentesque sit amet porttitor eget dolor. Sollicitudin ac orci phasellus egestas. Ultricies integer quis auctor elit sed vulputate mi sit. Leo in vitae turpis massa sed elementum tempus. Nisi lacus sed viverra tellus. Eget nulla facilisi etiam dignissim diam quis enim lobortis. In nisl nisi scelerisque eu ultrices vitae auctor eu augue. Fames ac turpis egestas integer eget. A pellentesque sit amet porttitor eget.</p>
+    <p>Dignissim enim sit amet venenatis urna. In nibh mauris cursus mattis molestie a iaculis at. Vitae tortor condimentum lacinia quis vel eros donec ac. Leo duis ut diam quam nulla porttitor massa. Semper eget duis at tellus at urna condimentum mattis pellentesque. Non consectetur a erat nam at lectus urna. Fermentum leo vel orci porta non pulvinar neque. Ornare arcu odio ut sem nulla pharetra. Sit amet nisl suscipit adipiscing bibendum est ultricies integer. Facilisis mauris sit amet massa vitae tortor condimentum lacinia quis. At tellus at urna condimentum mattis pellentesque id nibh. Nec sagittis aliquam malesuada bibendum arcu vitae. Arcu non sodales neque sodales ut etiam sit amet nisl. Vulputate odio ut enim blandit volutpat maecenas. Magna ac placerat vestibulum lectus mauris ultrices eros. Varius quam quisque id diam vel quam elementum pulvinar. Arcu dui vivamus arcu felis bibendum ut tristique. Pharetra diam sit amet nisl suscipit. Blandit aliquam etiam erat velit. Ipsum nunc aliquet bibendum enim facilisis gravida neque convallis a.</p>
+  </div>
+</p-slide>
+<p-slide>
+  <h3 class="our-header"><em>Other</em> timelines? 🤞</h3>
+  <p-fragment class="self-center" style="margin: 2em 0;">
+    <big><code>InputTimeline</code></big>
+  </p-fragment>
+  <p-fragment class="overlay-banner" style="font-size: 2em;">
+    Not here yet&hellip;
+  </p-fragment>
+</p-slide>
+    <p-slide>
+  <img src="img/hic-sunt-leones.webp" alt="Old map of Northern Africa" class="full-media">
+  <div class="overlay-banner" style="font-size: 250%;">Hic Sunt Leones</div>
+</p-slide>
+<p-slide class="justify-center">
+  <h1 class="our-header">Font metrics API</h1>
+</p-slide>
+<p-slide class="justify-center">
+  <h4 class="our-header">Layout + font = ❤</h4>
+  <img src="img/font.png" alt="An explainer of font metrics" style="height: 8em;">
+</p-slide>
+<p-slide class="justify-center">
+  <h4 class="our-header">Answering questions</h4>
+  <ul class="self-center">
+    <li><p-fragment>🤔 How wide will <code>"foo"</code> be?</p-fragment></li>
+    <li><p-fragment>🤔 What's the baseline?</p-fragment></li>
+    <li><p-fragment>🤔 What fonts are being used?</p-fragment></li>
+    <li><p-fragment>🤔 Kerning, ligatures, &hellip;</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide class="justify-center">
+  <h1 class="center" style="font-size: 3em;">¯\_(ツ)_/¯</h1>
+</p-slide>
+    <p-slide class="justify-center">
+  <h1 class="our-header">Parser API</h1>
+</p-slide>
+<p-slide class="justify-center">
+  <h4 class="our-header">Allowing to parse</h4>
+  <ul class="self-center">
+    <li><p-fragment>👉 values;</p-fragment></li>
+    <li><p-fragment>👉 rules;</p-fragment></li>
+    <li><p-fragment>👉 stylesheets;</p-fragment></li>
+    <li><p-fragment>👉 CSS-like documents.</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide class="justify-center">
+  <img src="img/strawman.webp" alt="A literal strawman" class="full-media">
+  <div class="overlay-banner" style="font-size: 3em; font-weight: bold;">¯\_(ツ)_/¯</div>
+</p-slide>
+    <p-slide>
+  <h3 class="our-header">Links #1</h3>
+  <ul class="links">
+    <li>
+      🔗 CSS-TAG Houdini Editor Drafts
+      <a href="https://drafts.css-houdini.org/">drafts.css-houdini.org</a>
+    </li>
+    <li>
+      🔗 Is Houdini ready yet‽ <small>@DasSurma</small>
+      <a href="https://ishoudinireadyyet.com/">ishoudinireadyyet.com</a>
+    </li>
+    <li>
+      🔗 CSS Houdini <small>@snugug</small>
+      <a href="https://houdini.glitch.me/">houdini.glitch.me</a>
+    </li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Links #2</h3>
+  <ul class="links">
+    <li>
+      🔗 CSS Houdini Experiments <small>@iamvdo</small>
+      <a href="https://css-houdini.rocks/">css-houdini.rocks</a>
+    </li>
+    <li>
+      🔗 Google Developers: all articles tagged Houdini
+      <a href="https://developers.google.com/web/updates/tags/houdini">developers.google.com/web/updates/tags/houdini</a>
+    </li>
+    <li>
+      🔗 Houdini Samples <small>@DasSurma et al.</small>
+      <a href="https://googlechromelabs.github.io/houdini-samples/">googlechromelabs.github.io/houdini-samples</a>
+    </li>
+  </ul>
+</p-slide>
+    <p-slide class="justify-start">
+  <img src="img/logo-antreem-border.svg" alt="Antreem logo" class="antreem-logo">
+  <div class="my-data">
+    <img src="img/maxart.jpg" alt="My face" class="my-face">
+    <h2>Massimo Artizzu</h2>
+    <p>
+      Web dev &amp; architect<br>
+      at <a href="https://antreem.com">Antreem</a>
+    </p>
+  </div>
+  <div class="my-info">
+    <h4>
+      <img src="img/twitter.svg" alt="Twitter logo"> /
+      <img src="img/github.svg" alt="GitHub logo">
+      @MaxArt2501
+    </h4>
+  </div>
+</p-slide>
+<p-slide>
+  <h3 class="center final-link">
+    <a href="https://maxart2501.github.io/css-houdini-talk/codemotion-mi18/">
+      maxart2501.github.io/css-houdini-talk/codemotion-mi18/
+    </a>
+    <img src="img/qr-code.png" alt="QR Code for the presentation's link">
+  </h3>
+</p-slide>
+<p-slide>
+  <pre class="self-center big"><code class="language-js">for (const question of questions) {
+  await answer(question)
+}</code></pre>
+</p-slide>
+  </p-deck>
+  <div role="progressbar" class="presentation-progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  <div role="toolbar" class="presentation-toolbar">
+    <button type="button" class="toggle-mode" title="Toggle speaker mode" aria-label="Toggle speaker mode (Alt-M)">
+      <svg viewBox="0 0 1 1"><path stroke-width="0.1" stroke="currentColor" fill="none" d="M.05 .5h.6v-.45h-.6v.9h.6v-.45M.75 .05h.25M.75 .2h.25M.75 .35h.25"/></svg>
+    </button>
+    <button type="button" class="fullscreen" title="Toggle fullscreen mode" aria-label="Toggle fullscreen mode">
+      <svg viewBox="0 0 1 1"><g stroke="currentColor" fill="none" stroke-width="0.1">
+        <path d="M.05 .3v-.25h.25M.7 .05h.25v.25M.95 .7v.25h-.25M.3 .95h-.25v-.25"/>
+        <path d="M.05 .3h.25v-.25M.7 .05v.25h.25M.95 .7h-.25v.25M.3 .95v-.25h-.25"/>
+      </g></svg>
+    </button>
+  </div>
+  <nav class="presentation-nav">
+    <button type="button" class="previous" title="Go backward" aria-label="Go backward"></button>
+    <button type="button" class="next" title="Go forward" aria-label="Go forward"></button>
+  </nav>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/presentation.js"></script>
+  <script async src="vendor/prismjs/prism.js"></script>
+</body>
+
+</html>
