@@ -512,3 +512,44 @@ ripple-button {
     padding-left: 1.75em;
   }
 }
+
+.antreem-logo {
+  position: absolute;
+  height: 12em;
+  right: 0;
+  bottom: -4em;
+}
+.my-data {
+  > h2 {
+    margin-bottom: 0;
+  }
+  a {
+    color: var(--brand-color);
+  }
+}
+.my-face {
+  border: .1em solid var(--brand-color);
+  border-radius: 50%;
+  height: 6em;
+  float: left;
+  margin: 0 1em;
+}
+.my-info {
+  width: 8em;
+  text-align: center;
+  margin: 2em 2em 0;
+  img {
+    height: 1em;
+    vertical-align: middle;
+  }
+}
+.final-link {
+  a {
+    color: var(--brand-color);
+  }
+  img {
+    display: block;
+    margin: 1em auto 0;
+    height: 7em;
+  }
+}
