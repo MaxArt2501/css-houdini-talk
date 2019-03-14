@@ -111,37 +111,45 @@ const deck = document.querySelector('p-deck');
     .map(animatorName => CSS.animationWorklet.addModule(`./js/worklets/animation/${animatorName}.js`))
   )
 
-  const sineAnimation = new WorkletAnimation(
-    'sine',
-    getAxisYEffect('sine')
-  );
-  sineAnimation.play();
-  new Animation(getAxisXEffect('sine')).play();
+  try {
+    const sineAnimation = new WorkletAnimation(
+      'sine',
+      getAxisYEffect('sine')
+    );
+    sineAnimation.play();
+    new Animation(getAxisXEffect('sine')).play();
+  } catch {}
 
-  const bounceAnimation = new WorkletAnimation(
-    'bounce',
-    getAxisYEffect('bounce')
-  );
-  bounceAnimation.play();
-  new Animation(getAxisXEffect('bounce')).play();
+  try {
+    const bounceAnimation = new WorkletAnimation(
+      'bounce',
+      getAxisYEffect('bounce')
+    );
+    bounceAnimation.play();
+    new Animation(getAxisXEffect('bounce')).play();
+  } catch {}
 
-  const projectileAnimation = new WorkletAnimation(
-    'bounce',
-    getAxisYEffect('projectile'),
-    document.timeline,
-    { bounces: .75 }
-  );
-  projectileAnimation.play();
-  new Animation(getAxisXEffect('projectile')).play();
+  try {
+    const projectileAnimation = new WorkletAnimation(
+      'bounce',
+      getAxisYEffect('projectile'),
+      document.timeline,
+      { bounces: .75 }
+    );
+    projectileAnimation.play();
+    new Animation(getAxisXEffect('projectile')).play();
+  } catch {}
 
-  const randomAnimation = new WorkletAnimation(
-    'random',
-    getAxisYEffect('random'),
-    document.timeline,
-    { seed: 123456 }
-  );
-  randomAnimation.play();
-  new Animation(getAxisXEffect('random')).play();
+  try {
+    const randomAnimation = new WorkletAnimation(
+      'random',
+      getAxisYEffect('random'),
+      document.timeline,
+      { seed: 123456 }
+    );
+    randomAnimation.play();
+    new Animation(getAxisXEffect('random')).play();
+  } catch {}
 
   const timeline = new ScrollTimeline({
     scrollSource: document.querySelector('.reading-marker-wrapper'),
