@@ -61,6 +61,27 @@
       height: 2em;
     }
   }
+
+  &.cssday {
+    --slide-bg: var(--brand-color);
+    background-color: var(--slide-bg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 133vmin, auto;
+    background-image: url('../img/logo-antreem-contour.svg'), paint(delaunay);
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 .25em black;
+
+    small { display: block; }
+
+    img {
+      background: white;
+      padding: .2em;
+      border-radius: .5em;
+      height: 5em;
+    }
+  }
 }
 
 .js-heading {
