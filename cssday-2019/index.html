@@ -16,22 +16,38 @@
 
 <body>
   <p-deck>
-    <p-slide class="cover">
-  <div class="cover-top">
-    <div class="cover-location">
-      Milan | November 29 - 30, 2018
-      <img src="img/codemotion.png" alt="Codemotion logo">
-    </div>
-    <h1>
-      The tricks of Houdini
-      <small>A magic wand for the future of CSS</small>
-    </h1>
-    <h2>Massimo Artizzu @MaxArt2501</h2>
+    <p-slide class="cover cssday">
+  <h3>
+    The magic tricks of Houdini
+    <small>A wagic wand for the future of CSS</small>
+  </h3>
+  <div>
+    <img src="img/cssday.svg" alt="Logo of CSS Day">
+    <small>Faenza, 2019-03-15</small>
   </div>
-  <div class="cover-bottom">
-    <img src="img/codemotion-milan.png" alt="Codemotion Milan">
-    <img src="img/license.svg" alt="Creative Commons, Attribution, Non-Commercial, Share-Alike">
+</p-slide>
+<p-slide class="justify-start">
+  <img src="img/logo-antreem-border.svg" alt="Antreem logo" class="antreem-logo">
+  <div class="my-data">
+    <img src="img/maxart.jpg" alt="My face" class="my-face">
+    <h2>Massimo Artizzu</h2>
+    <p>
+      Web dev &amp; architect<br>
+      at <a href="https://antreem.com">Antreem</a>
+    </p>
   </div>
+  <div class="my-info">
+    <h4>
+      <img src="img/twitter.svg" alt="Twitter logo"> /
+      <img src="img/github.svg" alt="GitHub logo">
+      @MaxArt2501
+    </h4>
+  </div>
+</p-slide>
+<p-slide class="center">
+  <h3>You can find these slides at</h3>
+  <img src="img/qr-slides.svg" alt="QR Code for the presentation's link" style="height: 7em; margin-bottom: 1em;">
+  <a href="https://maxart2501.github.io/css-houdini-talk/cssday-2019/">maxart2501.github.io/css-houdini-talk/cssday-2019/</a>
 </p-slide>
     <p-slide>
   <h4 class="our-header">Let's talk about&hellip;</h4>
@@ -343,41 +359,6 @@ element.attributeStyleMap.set('width', CSS.px(width));</code></pre>
   </p>
 </p-slide>
 <p-slide>
-  <h4 class="our-header">So what's <code>CSS.px()</code>?</h4>
-  <pre class="big">&gt; <code class="language-js">CSS.px(10)</code>
-&lt; <code>&#9654; <em>CSSUnitValue</em></code> <code class="language-js">{value: 10, unit: "px"}</code></pre>
-  <p-fragment>
-    <code>.cm()</code>, <code>.deg()</code>, <code>.em()</code>, <code>.fr()</code>, <code>.kHz()</code>, <code>.ms()</code>, <code>.number()</code>, <code>.percent()</code>, <code>.vh()</code>, &hellip;
-  </p-fragment>
-</p-slide>
-<p-slide>
-  <h4 class="our-header">Typed OM's types (partial list)</h4>
-  <ul class="self-center">
-    <li><p-fragment>
-      👉 <code>CSSKeywordValue</code>
-    </p-fragment></li>
-    <li><p-fragment>
-      👉 <code>CSSMathValue</code>
-      <p-notes>There are other helper classes to build complex <code>calc()</code> expressions</p-notes>
-    </p-fragment></li>
-    <li><p-fragment>
-      👉 <code>CSSTransformValue</code>
-      <p-notes>There are helper classes to build complex transformations too</p-notes>
-    </p-fragment></li>
-    <li><p-fragment>
-      👉 <code>CSSVariableReferenceValue</code>
-    </p-fragment></li>
-    <li><p-fragment>
-      👉 <code>CSSUnparsedValue</code>
-      <p-notes>This is what you get for a custom property (normally)</p-notes>
-    </p-fragment></li>
-    <li><p-fragment>
-      👉 <code>CSSStyleValue</code>
-      <p-notes>This is an opaque representation</p-notes>
-    </p-fragment></li>
-  </ul>
-</p-slide>
-<p-slide>
   <h4 class="our-header">Style maps</h4>
   <p>What's <code>.attributeStyleMap</code>?</p>
   <p>
@@ -407,26 +388,6 @@ element.attributeStyleMap.set('width', CSS.px(width));</code></pre>
         (e.g. for <code>opacity</code>, or rounded for <code>z-index</code> and so on)</p-notes>
     </p-fragment></li>
   </ul>
-</p-slide>
-<p-slide>
-  <ul class="self-center" style="font-size: 150%">
-    <li>☝ computed styles</li>
-    <li><p-fragment>✌ in CSS values</p-fragment></li>
-    <li><p-fragment>🤟 on the element</p-fragment></li>
-  </ul>
-  <p-notes>I couldn't find another hand emoji with 3 fingers out, Another candidate was the Spock hand</p-notes>
-</p-slide>
-<p-slide>
-  <h4 class="center">It's <code>.currentStyle</code> all over again!</h4>
-  <p-fragment class="self-center">&hellip; introduced by</p-fragment>
-  <p-fragment class="self-center" style="font-size: 2em">🥁</p-fragment>
-  <h2 class="center">
-    <p-fragment class="self-center">
-      <img data-lazy-src="./img/ie.png" alt="IE logo" class="inline-logo">
-      Internet Explorer <p-fragment><big>6</big></p-fragment>
-    </p-fragment>
-  </h2>
-  <p-notes>That had nothing to do with performance, though.</p-notes>
 </p-slide>
 <p-slide>
   <h3 class="our-header">And by the way</h3>
@@ -515,37 +476,6 @@ element.attributeStyleMap.set('width', CSS.px(width));</code></pre>
   <p-fragment><code class="language-js">initialValue: CSS.px(0),</code></p-fragment>
   <p-fragment><code class="language-js">inherits: false</code></p-fragment>
 <code class="language-js">});</code></pre>
-</p-slide>
-<p-slide>
-  <h4 class="our-header">All the syntaxes</h4>
-  <ul class="syntaxes">
-    <li><code>&ltcolor></code></li>
-    <li><code>&ltlength></code></li>
-    <li><code>&ltpercentage></code></li>
-    <li><code>&ltlength-percentage></code></li>
-    <li><code>&ltnumber></code></li>
-    <li><code>&ltinteger></code></li>
-    <li><code>&ltangle></code></li>
-    <li><code>&lttime></code></li>
-    <li><code>&lturl></code></li>
-    <li><code>&ltimage></code></li>
-    <li><code>&lttransform-list></code></li>
-    <li><code>&lttransform-function></code></li>
-    <li><code>&ltresolution></code></li>
-    <li><code>&ltcustom-ident></code></li>
-  </ul>
-</p-slide>
-<p-slide>
-  <h4 class="our-header">Combinations too</h4>
-  <ul class="self-center">
-    <li><p-fragment>👉 Space separated: <code>&lt;color>+</code></p-fragment></li>
-    <li><p-fragment>👉 Comma separated: <code>&lt;url>#</code></p-fragment></li>
-    <li><p-fragment>👉 Type union: <code>&lt;number> | &lt;length></code></p-fragment></li>
-  </ul>
-</p-slide>
-<p-slide>
-  <h4 class="our-header">Bonus 🙌</h4>
-  <p class="center"><big>Interpolated custom properties <em>work with Paint API</em> 👌</big></p>
 </p-slide>
 <p-slide>
   <h4 class="our-header">Next step 🔭</h4>
@@ -660,16 +590,6 @@ CSS.registerProperty({
   </div>
 </p-slide>
 <p-slide class="justify-center">
-  <h4 class="our-header">Children and fragments</h4>
-  <div class="layout-fragments">
-    <p-fragment>
-      <div class="layout-fragment">Lorem ipsum</div>
-      <div class="layout-fragment">dolor sit</div>
-      <div class="layout-fragment">amet</div>
-    </p-fragment>
-  </div>
-</p-slide>
-<p-slide class="justify-center">
   <pre><code class="language-js">CSS.layoutWorklet.addModule('./my-layout.js')</code></pre>
   <p-fragment>
     <pre><code class="language-js">registerLayout('my-layout', class {</code>
@@ -684,12 +604,6 @@ CSS.registerProperty({
   </p-fragment>
   <p-notes>I won't explain all this, it could be overwhelming. Doing a layout is a very complex task.</p-notes>
   <p-notes>It would also be futile, as this spec is bound to change.</p-notes>
-</p-slide>
-<p-slide class="justify-center">
-  <div class="intrinsic-sizes">
-    <div class="min-content-size">Lorem ipsum dolor sit amet</div>
-    <div class="max-content-size">Lorem ipsum dolor sit amet</div>
-  </div>
 </p-slide>
 <p-slide>
   <h4 class="our-header">What <em>can</em> we do?</h4>
@@ -733,87 +647,6 @@ CSS.registerProperty({
   <p-fragment><p>Could do <em>much more!</em></p></p-fragment>
 </p-slide>
 <p-slide>
-  <h3 class="center" style="margin: 0;">Animation types</h3>
-  <div class="animation-showcase">
-    <p-fragment>
-      <div class="cage" effect="linear">
-        <div class="ball"></div>
-      </div>
-    </p-fragment>
-    <p-fragment>
-      <div class="cage" effect="ease">
-        <div class="ball"></div>
-      </div>
-    </p-fragment>
-    <p-fragment>
-      <div class="cage" effect="steps(4, start)">
-        <div class="ball"></div>
-      </div>
-    </p-fragment>
-    <p-fragment>
-      <div class="cage" effect="cubic-bezier(0, 1, .5, 1.5)">
-        <div class="ball"></div>
-      </div>
-    </p-fragment>
-  </div>
-</p-slide>
-<p-slide>
-  <div class="animation-showcase">
-    <div class="cage" effect="normal">
-      <div class="endpoint"></div>
-      <div class="endpoint" style="top: 0; left: 100%;"></div>
-    </div>
-    <p-fragment>
-      <div class="cage" effect="reverse">
-        <div class="endpoint" style="top: 0"></div>
-        <div class="endpoint" style="top: 100%; left: 100%;"></div>
-      </div>
-    </p-fragment>
-    <p-fragment>
-      <div class="cage" effect="alternate">
-        <div class="endpoint"></div>
-        <div class="endpoint" style="top: 0; left: 50%;"></div>
-        <div class="endpoint" style="top: 100%; left: 100%;"></div>
-      </div>
-    </p-fragment>
-    <p-fragment>
-      <div class="cage" effect="alternate-reverse">
-        <div class="endpoint" style="top: 0;"></div>
-        <div class="endpoint" style="top: 100%; left: 50%;"></div>
-        <div class="endpoint" style="top: 0; left: 100%;"></div>
-      </div>
-    </p-fragment>
-  </div>
-  <p-fragment class="overlay-banner" style="font-size: 2em;">
-    We can break this 💪
-  </p-fragment>
-</p-slide>
-<p-slide>
-  <h3 class="center" style="margin: 0;">Animations with Houdini</h3>
-  <div class="animation-showcase">
-    <p-fragment>
-      <div class="cage" effect="sine">
-        <div class="ball"></div>
-      </div>
-    </p-fragment>
-    <p-fragment>
-      <div class="cage" effect="bounce">
-        <div class="ball"></div>
-      </div>
-    </p-fragment>
-    <p-fragment>
-      <div class="cage" effect="projectile">
-        <div class="ball"></div>
-      </div>
-    </p-fragment>
-    <p-fragment>
-      <div class="cage" effect="random">
-        <div class="ball"></div>
-      </div>
-    </p-fragment>
-  </div>
-</p-slide>
-<p-slide>
   <pre class="big"><code class="language-js">registerAnimator('my-animator', class {</code>
   <p-fragment><code class="language-js">constructor(options = {}) {
     this.options = options;
@@ -834,16 +667,6 @@ CSS.registerProperty({
 );</code></p-fragment>
 
 <p-fragment><code class="language-js">animation.play();</code></p-fragment></pre>
-</p-slide>
-<p-slide>
-  <h4 class="our-header">Stateful animators</h4>
-  <pre class="big"><code class="language-js">class MyAnimator {</code>
-  <p-fragment><code class="language-js">constructor(opts, state = {}) {
-    this._state = state;
-  }</code></p-fragment>
-
-  <p-fragment><code class="language-js">get state() { return this._state; }</code></p-fragment>
-}</pre>
 </p-slide>
 <p-slide>
   <h4 class="our-header">Timelines 💫</h4>
@@ -961,33 +784,7 @@ CSS.registerProperty({
     </li>
   </ul>
 </p-slide>
-    <p-slide class="justify-start">
-  <img src="img/logo-antreem-border.svg" alt="Antreem logo" class="antreem-logo">
-  <div class="my-data">
-    <img src="img/maxart.jpg" alt="My face" class="my-face">
-    <h2>Massimo Artizzu</h2>
-    <p>
-      Web dev &amp; architect<br>
-      at <a href="https://antreem.com">Antreem</a>
-    </p>
-  </div>
-  <div class="my-info">
-    <h4>
-      <img src="img/twitter.svg" alt="Twitter logo"> /
-      <img src="img/github.svg" alt="GitHub logo">
-      @MaxArt2501
-    </h4>
-  </div>
-</p-slide>
-<p-slide>
-  <h3 class="center final-link">
-    <a href="https://maxart2501.github.io/css-houdini-talk/codemotion-mi18/">
-      maxart2501.github.io/css-houdini-talk/codemotion-mi18/
-    </a>
-    <img src="img/qr-code.png" alt="QR Code for the presentation's link">
-  </h3>
-</p-slide>
-<p-slide>
+    <p-slide>
   <pre class="self-center big"><code class="language-js">for (const question of questions) {
   await answer(question)
 }</code></pre>
