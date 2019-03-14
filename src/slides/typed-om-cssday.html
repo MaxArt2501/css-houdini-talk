@@ -1,0 +1,108 @@
+<p-slide class="justify-center">
+  <h1 class="our-header">Typed OM</h1>
+</p-slide>
+<p-slide>
+  <pre><code class="language-js">element.style.fontSize = '20px';</code></pre>
+  <p-fragment>
+    <div class="center">becomes</div>
+    <pre><code class="language-js">element.attributeStyleMap.set('font-size', CSS.px(20));</code></pre>
+  </p-fragment>
+  <p-fragment class="center" style="flex: 1 0 0">
+    <img data-lazy-src="./img/confused.webp" alt="Guy looking confused" style="height: 100%">
+  </p-fragment>
+  <p-notes>How is <em>that</em> an improvement?!</p-notes>
+</p-slide>
+<p-slide>
+  <div class="center">One word:</div>
+  <p-fragment>
+    <h1 class="center">Performance</h1>
+  </p-fragment>
+  <p-fragment>
+    <p class="center">and other stuff</p>
+  </p-fragment>
+  <p-fragment>
+    <p class="center"><small>(ok, that's 4)</small></p>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">What usually happens</h4>
+  <pre class="big self-center"><code class="language-js">const width = someComputation();
+element.style.width = `${width}px`;</code></pre>
+  <p class="center">
+    <p-fragment>number</p-fragment>
+    <p-fragment>➡ string</p-fragment>
+    <p-fragment>➡ CSS parse</p-fragment>
+    <p-fragment>➡ CSS value</p-fragment>
+  </p>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">What happens with Typed OM</h4>
+  <pre class="big self-center"><code class="language-js">const width = someComputation();
+element.attributeStyleMap.set('width', CSS.px(width));</code></pre>
+  <p class="center">
+    <p-fragment>number</p-fragment>
+    <p-fragment>
+      ➡ <span class="crossed">string</span>
+      ➡ <span class="crossed">CSS parse</span>
+      ➡ CSS value
+    </p-fragment>
+  </p>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Style maps</h4>
+  <p>What's <code>.attributeStyleMap</code>?</p>
+  <p>
+    <p-fragment>It's a <code>Map</code></p-fragment>
+    <p-fragment>for style properties</p-fragment>
+  </p>
+  <p class="center"><big><p-fragment><code>StylePropertyMap</code></p-fragment></big></p>
+  <p-notes>It means you can set numbers, strings or typed values; and you get only typed values.</p-notes>
+</p-slide>
+<p-slide>
+  <p>There are two defined on elements:</p>
+  <ul class="self-center">
+    <li><p-fragment>
+      👉 <code>.attributeStyleMap</code>
+    </p-fragment></li>
+    <li><p-fragment style="margin-left: 2em">
+      ~ <code>.style</code>
+    </p-fragment></li>
+    <li><p-fragment>
+      👉 <code>.computedStyleMap<p-fragment>()</p-fragment></code><p-notes>
+        I have no idea why the didn't call it <code>getComputedStyleMap</code>, if they didn't fear to be verbose
+      </p-notes>
+    </p-fragment></li>
+    <li><p-fragment style="margin-left: 2em">
+      ~ <code>getComputedStyle()</code>
+      <p-notes><code>.computedStyleMap()</code> also returns <em>clamped/adjusted</em> values
+        (e.g. for <code>opacity</code>, or rounded for <code>z-index</code> and so on)</p-notes>
+    </p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">And by the way</h3>
+  <p><code>paint(<span style="opacity: .5">ctx, geom,</span> <big>properties</big>)</code></p>
+  <p-fragment>That's a <code>StylePropertyMap</code> too.</p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Other perks</h4>
+  <ul>
+    <li>
+      <p-fragment>
+        🤔 Classic CSSOM always returns strings
+        <p-notes>Event for numeric values, like <code>opacity</code> or <code>z-index</code></p-notes>
+      </p-fragment>
+      <p-fragment style="display: block">
+        <pre class="big"><code class="language-js">el.style.opacity += 0.1; // oh noes!</code></pre>
+      </p-fragment>
+    </li>
+    <li style="margin-top: 1em">
+      <p-fragment>
+        💥 Invalid values now <em>throw</em>
+      </p-fragment>
+      <p-fragment style="display: block">
+        <pre class="big"><code class="language-js">el.attributeStyleMap.set('margin', 'foo'); // 😱</code></pre>
+      </p-fragment>
+    </li>
+  </ul>
+</p-slide>

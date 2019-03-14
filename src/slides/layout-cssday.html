@@ -1,0 +1,57 @@
+<p-slide class="justify-center">
+  <h1 class="our-header">Layout API</h1>
+</p-slide>
+<p-slide>
+  <img src="img/mock-solid.webp" alt="A house crumbling because of termites" class="full-media">
+  <div class="overlay-banner" style="font-size: 250%;">Mock-solid 😰</div>
+</p-slide>
+<p-slide class="justify-center">
+  <div class="layout-explainer">
+    <p-fragment><code>display: layout(my-layout)</code></p-fragment>
+    <p-fragment>
+      <div class="layout-child">😉</div>
+      <div class="layout-child">😎</div>
+      <div class="layout-child">😋</div>
+      <div class="layout-child">🤣</div>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="justify-center">
+  <pre><code class="language-js">CSS.layoutWorklet.addModule('./my-layout.js')</code></pre>
+  <p-fragment>
+    <pre><code class="language-js">registerLayout('my-layout', class {</code>
+  <p-fragment><code class="language-js">async layout(children, edges, constraints, properties, breakToken) {</code>
+    <p-fragment><big>😱</big></p-fragment>
+  }</p-fragment>
+  <p-fragment><code class="language-js">async intrinsicSizes(children, edges, properties) { 🤔 }
+  static inputProperties = ['--foo'];
+  static childrenInputProperties = ['--bar'];
+  static layoutOptions = {childDisplay: 'normal', sizing: 'block-like'};</code></p-fragment>
+});</code></pre>
+  </p-fragment>
+  <p-notes>I won't explain all this, it could be overwhelming. Doing a layout is a very complex task.</p-notes>
+  <p-notes>It would also be futile, as this spec is bound to change.</p-notes>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">What <em>can</em> we do?</h4>
+  <ul class="self-center">
+    <li><p-fragment>👉 "blockify" the children (or not)</p-fragment></li>
+    <li><p-fragment>👉 give constraints to fragments</p-fragment></li>
+    <li><p-fragment>👉 position the children</p-fragment></li>
+    <li><p-fragment>👉 set the parent's <em>block</em> size</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide class="justify-center">
+  <h4 class="our-header">Easy masonry 🏠</h4>
+  <img src="img/masonry.webp" alt="Example of masonry layout" style="height: 8em;">
+  <p-fragment class="overlay-banner" style="font-size: 1.5em;">
+    googlechromelabs.github.io<br>/houdini-samples
+  </p-fragment>
+</p-slide>
+<p-slide class="justify-center">
+  <div class="carousel-wrapper">
+    <button type="button" class="carousel-previous">👈</button>
+    <div class="carousel"></div>
+    <button type="button" class="carousel-next">👉</button>
+  </div>
+</p-slide>
