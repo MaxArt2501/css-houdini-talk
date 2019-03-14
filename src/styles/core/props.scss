@@ -2,7 +2,7 @@
   // p-slides specific
   --slide-debug: 0;
   --slide-aspect-ratio: 1.777777;
-  --sliding-duration: calc(500ms + 2000ms * var(--slide-debug, 0));
+  --sliding-duration: calc(150ms + 2000ms * var(--slide-debug, 0));
   --fragment-duration: calc(300ms + 1200ms * var(--slide-debug, 0));
   --slide-font-size: 4;
   --slide-print-width: 297mm;
